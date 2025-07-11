@@ -14,95 +14,243 @@
             --dark: #3c3633; 
             --light: #f8f5f0;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', 'Segoe UI', 'PingFang SC', sans-serif; }
-        body { background: var(--light); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Montserrat', 'Segoe UI', 'PingFang SC', sans-serif; 
+        }
+        body { 
+            background: var(--light); 
+            color: var(--dark); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
         
         /* 导航栏 */
         header {
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            background: rgba(248, 245, 240, 0.95); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 12px 0; transition: all 0.3s ease;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 1000;
+            background: rgba(248, 245, 240, 0.95); 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 0; 
+            transition: all 0.3s ease;
         }
-        .navbar { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 28px; font-weight: 700; color: var(--dark); text-decoration: none; }
-        .logo span { color: var(--accent); }
-        .nav-links { display: flex; list-style: none; }
-        .nav-links li { margin-left: 30px; }
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { 
+            font-size: 28px; 
+            font-weight: 700; 
+            color: var(--dark); 
+            text-decoration: none; 
+        }
+        .logo span { 
+            color: var(--accent); 
+        }
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+        }
+        .nav-links li { 
+            margin-left: 30px; 
+        }
         .nav-links a {
-            text-decoration: none; color: var(--dark); font-weight: 500; font-size: 16px;
-            position: relative; transition: color 0.3s ease;
+            text-decoration: none; 
+            color: var(--dark); 
+            font-weight: 500; 
+            font-size: 16px;
+            position: relative; 
+            transition: color 0.3s ease;
         }
         .nav-links a:after {
-            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
-            background: var(--accent); transition: width 0.3s ease;
+            content: ''; 
+            position: absolute; 
+            bottom: -5px; 
+            left: 0; 
+            width: 0; 
+            height: 2px;
+            background: var(--accent); 
+            transition: width 0.3s ease;
         }
-        .nav-links a:hover:after { width: 100%; }
-        .nav-links a:hover { color: var(--accent); }
-        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--dark); }
+        .nav-links a:hover:after { 
+            width: 100%; 
+        }
+        .nav-links a:hover { 
+            color: var(--accent); 
+        }
+        .hamburger { 
+            display: none; 
+            cursor: pointer; 
+            font-size: 1.5rem; 
+            color: var(--dark); 
+        }
         
         /* 英雄区域 */
         .hero {
-            height: 100vh; display: flex; align-items: center; position: relative;
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            position: relative;
             background: linear-gradient(rgba(60, 54, 51, 0.3), rgba(60, 54, 51, 0.7)), 
                        url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover; background-position: center; color: white;
+            background-size: cover; 
+            background-position: center; 
+            color: white;
         }
-        .hero-content { max-width: 650px; margin: 0 auto; padding: 0 20px; text-align: center; }
-        .hero h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; font-weight: 300; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-content { 
+            max-width: 650px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            text-align: center; 
+        }
+        .hero h1 { 
+            font-size: 3.2rem; 
+            font-weight: 700; 
+            margin-bottom: 20px; 
+            line-height: 1.2; 
+        }
+        .hero p { 
+            font-size: 1.2rem; 
+            margin-bottom: 30px; 
+            font-weight: 300; 
+            max-width: 600px; 
+            margin: 0 auto 30px;
+        }
         .btn {
-            display: inline-block; padding: 12px 30px; background: var(--accent); color: white;
-            text-decoration: none; border-radius: 30px; font-weight: 500; transition: all 0.3s ease;
-            border: 2px solid var(--accent); margin: 5px;
+            display: inline-block; 
+            padding: 12px 30px; 
+            background: var(--accent); 
+            color: white;
+            text-decoration: none; 
+            border-radius: 30px; 
+            font-weight: 500; 
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent); 
+            margin: 5px;
         }
-        .btn:hover { background: transparent; color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
-        .btn-outline { background: transparent; border: 2px solid white; }
-        .btn-outline:hover { background: white; color: var(--dark); }
+        .btn:hover { 
+            background: transparent; 
+            color: var(--accent); 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+        }
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid white; 
+        }
+        .btn-outline:hover { 
+            background: white; 
+            color: var(--dark); 
+        }
         
         /* 通用区域样式 */
-        .section { padding: 80px 0; }
-        .section-title { text-align: center; margin-bottom: 50px; }
+        .section { 
+            padding: 80px 0; 
+        }
+        .section-title { 
+            text-align: center; 
+            margin-bottom: 50px; 
+        }
         .section-title h2 {
-            font-size: 2.5rem; color: var(--dark); display: inline-block; position: relative;
+            font-size: 2.5rem; 
+            color: var(--dark); 
+            display: inline-block; 
+            position: relative;
             padding-bottom: 15px;
         }
         .section-title h2:after {
-            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-            width: 80px; height: 3px; background: var(--accent);
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%);
+            width: 80px; 
+            height: 3px; 
+            background: var(--accent);
         }
         
-        /* 关于区域 - 确保电脑端照片在左文字在右 */
+        /* 关于区域 */
         .about-content { 
             display: flex; 
             align-items: center; 
             gap: 40px; 
-            flex-direction: row; /* 确保水平排列 */
         }
         .about-image {
-            flex: 0 0 45%; border-radius: 10px; overflow: hidden;
+            flex: 0 0 45%; 
+            border-radius: 10px; 
+            overflow: hidden;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        .about-image img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
-        .about-text { flex: 1; }
-        .about-text h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--dark); }
-        .about-text p { margin-bottom: 15px; color: #555; line-height: 1.7; }
-        .signature { font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--accent); margin-top: 20px; display: block; }
+        .about-image img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            transition: transform 0.5s ease; 
+        }
+        .about-text { 
+            flex: 1; 
+        }
+        .about-text h3 { 
+            font-size: 1.8rem; 
+            margin-bottom: 15px; 
+            color: var(--dark); 
+        }
+        .about-text p { 
+            margin-bottom: 15px; 
+            color: #555; 
+            line-height: 1.7; 
+        }
+        .signature { 
+            font-family: 'Dancing Script', cursive; 
+            font-size: 2rem; 
+            color: var(--accent); 
+            margin-top: 20px; 
+            display: block; 
+        }
         
         /* 服务区域 */
-        .services { background-color: #f5f1e9; }
+        .services { 
+            background-color: #f5f1e9; 
+        }
         .services-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 25px; 
         }
         .service-card {
-            background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease; text-align: center; padding: 30px 20px;
+            background: white; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease; 
+            text-align: center; 
+            padding: 30px 20px;
         }
-        .service-card:hover { transform: translateY(-8px); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1); }
-        .service-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
-        .service-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--dark); }
+        .service-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1); 
+        }
+        .service-icon { 
+            font-size: 2.5rem; 
+            color: var(--accent); 
+            margin-bottom: 15px; 
+        }
+        .service-card h3 { 
+            font-size: 1.4rem; 
+            margin-bottom: 12px; 
+            color: var(--dark); 
+        }
         
         /* 作品集区域 - 优化版 */
         .portfolio-grid { 
@@ -116,14 +264,18 @@
             overflow: hidden; 
             height: 320px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            -webkit-tap-highlight-color: transparent; /* 移除移动端点击高亮 */
+            cursor: pointer;
         }
         .portfolio-item img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
             display: block;
-            will-change: transform; /* 优化动画性能 */
+            transition: transform 0.4s ease;
+        }
+        /* 悬停时放大图片 */
+        .portfolio-item:hover img {
+            transform: scale(1.05);
         }
         .portfolio-overlay {
             position: absolute; 
@@ -141,11 +293,23 @@
             padding: 20px; 
             text-align: center; 
             color: white;
-            pointer-events: none; /* 防止覆盖层拦截事件 */
+            pointer-events: none;
+        }
+        /* 桌面悬停效果 */
+        @media (hover: hover) and (pointer: fine) {
+            .portfolio-item:hover .portfolio-overlay {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .portfolio-item:hover .portfolio-overlay h3, 
+            .portfolio-item:hover .portfolio-overlay p, 
+            .portfolio-item:hover .portfolio-overlay .btn {
+                transform: translateY(0);
+            }
         }
         .portfolio-overlay.active { 
             opacity: 1; 
-            pointer-events: auto; /* 激活时允许交互 */
+            pointer-events: auto;
         }
         .portfolio-overlay h3 { 
             font-size: 1.6rem; 
@@ -162,6 +326,7 @@
         .portfolio-overlay .btn { 
             transform: translateY(20px);
             transition: transform 0.4s ease 0.2s;
+            pointer-events: auto; /* 确保按钮可点击 */
         }
         .portfolio-overlay.active h3, 
         .portfolio-overlay.active p, 
@@ -174,8 +339,8 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             background: rgba(0, 0, 0, 0.2);
             border-radius: 50%;
             display: flex;
@@ -184,10 +349,11 @@
             cursor: pointer;
             opacity: 0;
             transition: opacity 0.3s ease;
+            z-index: 10;
         }
         .close-btn i {
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
         }
         .portfolio-overlay.active .close-btn {
             opacity: 1;
@@ -197,188 +363,243 @@
         .testimonials {
             background: linear-gradient(rgba(60, 54, 51, 0.85), rgba(60, 54, 51, 0.85)), 
                        url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover; background-position: center; color: white;
+            background-size: cover; 
+            background-position: center; 
+            color: white;
         }
-        .testimonials .section-title h2 { color: white; }
-        .testimonials .section-title h2:after { background: var(--accent); }
-        .testimonial-slider { max-width: 800px; margin: 0 auto; text-align: center; }
+        .testimonials .section-title h2 { 
+            color: white; 
+        }
+        .testimonials .section-title h2:after { 
+            background: var(--accent); 
+        }
+        .testimonial-slider { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center; 
+        }
         .testimonial-card {
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 10px;
-            padding: 40px; margin: 20px;
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px); 
+            border-radius: 10px;
+            padding: 40px; 
+            margin: 20px;
         }
-        .testimonial-text { font-size: 1.2rem; font-style: italic; margin-bottom: 25px; line-height: 1.8; }
-        .client-info { display: flex; align-items: center; justify-content: center; }
+        .testimonial-text { 
+            font-size: 1.2rem; 
+            font-style: italic; 
+            margin-bottom: 25px; 
+            line-height: 1.8; 
+        }
+        .client-info { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
         .client-image {
-            width: 70px; height: 70px; border-radius: 50%; overflow: hidden; margin-right: 15px;
+            width: 70px; 
+            height: 70px; 
+            border-radius: 50%; 
+            overflow: hidden; 
+            margin-right: 15px;
             border: 3px solid var(--accent);
         }
-        .client-image img { width: 100%; height: 100%; object-fit: cover; }
+        .client-image img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
         
-        /* 联系区域 */
-        .contact-section { padding: 80px 0; background-color: var(--light); }
-        .contact-container { max-width: 800px; margin: 0 auto; text-align: center; }
-        .contact-info { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr)); 
-            gap: 25px; 
-            margin-top: 40px; 
-            text-align: left;
+        /* 预约咨询区域 - 优化版 */
+        .contact-section { 
+            padding: 80px 0; 
+            background-color: var(--light); 
         }
-        .contact-detail {
-            display: flex; align-items: flex-start; gap: 18px; padding: 20px;
-            background: rgba(232, 216, 196, 0.2); border-radius: 10px;
+        .contact-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center; 
         }
-        .contact-icon { font-size: 1.8rem; color: var(--accent); min-width: 50px; text-align: center; padding-top: 5px; }
-        .contact-text h4 { font-size: 1.2rem; margin-bottom: 8px; color: var(--dark); }
-        .contact-text p { color: #555; line-height: 1.5; font-size: 0.95rem; }
-        .work-time { display: block; margin-top: 5px; font-size: 0.9rem; }
-        .contact-methods { margin-top: 50px; padding: 30px; background: rgba(232, 216, 196, 0.2); border-radius: 10px; }
-        .contact-methods h3 { font-size: 1.7rem; margin-bottom: 25px; color: var(--dark); }
-        .method-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        
+        .booking-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .booking-card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(232, 216, 196, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .booking-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+        
+        .booking-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .booking-card h3 i {
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+        
+        .booking-details {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        .booking-details p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-methods { 
+            margin-top: 50px; 
+            padding: 30px; 
+            background: rgba(232, 216, 196, 0.2); 
+            border-radius: 10px; 
+        }
+        .contact-methods h3 { 
+            font-size: 1.7rem; 
+            margin-bottom: 25px; 
+            color: var(--dark); 
+        }
+        .method-buttons { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            flex-wrap: wrap; 
+        }
         .method-btn {
-            padding: 14px 28px; background: var(--accent); color: white; border: none; border-radius: 30px;
-            font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease;
-            display: flex; align-items: center; gap: 10px;
+            padding: 14px 28px; 
+            background: var(--accent); 
+            color: white; 
+            border: none; 
+            border-radius: 30px;
+            font-size: 1rem; 
+            font-weight: 500; 
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            display: flex; 
+            align-items: center; 
+            gap: 10px;
         }
-        .method-btn:hover { background: #c29d6b; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+        .method-btn:hover { 
+            background: #c29d6b; 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+        }
         
-        /* 页脚 - 优化版 */
-        footer { background-color: var(--dark); color: white; padding: 60px 0 25px; }
+        /* 页脚 - 强制布局 */
+        footer { 
+            background-color: var(--dark); 
+            color: white; 
+            padding: 60px 0 25px; 
+        }
         .footer-content { 
-            display: grid; 
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 35px; 
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
             margin-bottom: 40px; 
         }
-        .footer-logo { font-size: 2rem; font-weight: 700; margin-bottom: 15px; color: white; }
-        .footer-logo span { color: var(--accent); }
-        .footer-about p { margin-bottom: 20px; color: #aaa; font-size: 0.95rem; }
-        .footer-heading { font-size: 1.3rem; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
-        .footer-heading:after { content: ''; position: absolute; bottom: 0; left: 0; width: 50px; height: 2px; background: var(--accent); }
-        .footer-links li { list-style: none; margin-bottom: 10px; }
-        .footer-links a { color: #aaa; text-decoration: none; transition: color 0.3s ease; font-size: 0.95rem; }
-        .footer-links a:hover { color: var(--accent); }
-        .footer-contact p { display: flex; align-items: flex-start; margin-bottom: 12px; color: #aaa; font-size: 0.95rem; }
-        .footer-contact i { margin-right: 10px; color: var(--accent); min-width: 20px; padding-top: 3px; }
-        .wechat-account { display: block; margin-top: 5px; font-weight: 500; color: #e8d8c4; }
-        .copyright { text-align: center; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #aaa; font-size: 0.9rem; }
-        
-        /* 响应式设计 */
-        @media (min-width: 992px) {
-            .services-grid { grid-template-columns: repeat(4, 1fr); }
+        .footer-about { 
+            width: 100%;
+        }
+        .footer-logo { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            margin-bottom: 15px; 
+            color: white; 
+        }
+        .footer-logo span { 
+            color: var(--accent); 
+        }
+        .footer-about p { 
+            margin-bottom: 20px; 
+            color: #aaa; 
+            font-size: 0.95rem; 
         }
         
-        @media (max-width: 1200px) {
-            .hero-content { margin: 0 auto; }
+        .footer-bottom-row {
+            display: flex;
+            width: 100%;
+            gap: 40px;
         }
         
-        @media (max-width: 992px) {
-            .hero h1 { font-size: 2.8rem; }
-            .about-content { flex-direction: column; }
-            .about-image { flex: 0 0 100%; max-width: 500px; margin: 0 auto 30px; }
-            .contact-info { 
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: auto auto;
-            }
-            /* 页脚移动端优化 */
-            .footer-content { 
-                grid-template-columns: 1fr 1fr; 
-                grid-template-rows: auto auto;
-            }
-            .footer-about { 
-                grid-column: 1 / 3; 
-                grid-row: 1;
-            }
-            .footer-contact { 
-                grid-column: 1; 
-                grid-row: 2;
-            }
-            .footer-links { 
-                grid-column: 2; 
-                grid-row: 2;
-            }
+        .footer-links, .footer-contact {
+            flex: 1;
         }
         
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            .nav-links {
-                position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px);
-                background: var(--light); flex-direction: column; align-items: center; padding-top: 50px;
-                transition: left 0.3s ease;
-            }
-            .nav-links.active { left: 0; }
-            .nav-links li { margin: 15px 0; }
-            .hero h1 { font-size: 2.3rem; }
-            .hero p { font-size: 1rem; }
-            .section { padding: 60px 0; }
-            .section-title { margin-bottom: 40px; }
-            .section-title h2 { font-size: 2rem; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .portfolio-item { height: 280px; }
-            .portfolio-overlay h3 { font-size: 1.4rem; }
-            .portfolio-overlay p { font-size: 0.9rem; margin-bottom: 15px; }
-            .testimonial-card { padding: 25px; }
-            .testimonial-text { font-size: 1rem; }
-            .contact-detail { padding: 15px; }
-            .service-card { padding: 25px 15px; }
+        .footer-heading { 
+            font-size: 1.3rem; 
+            margin-bottom: 20px; 
+            position: relative; 
+            padding-bottom: 10px; 
         }
-        
-        @media (max-width: 576px) {
-            .hero { text-align: center; }
-            .hero-content { padding: 0 15px; }
-            .hero h1 { font-size: 2rem; }
-            .hero-btns { display: flex; flex-direction: column; gap: 15px; }
-            .btn, .btn-outline { width: 100%; margin: 5px 0; }
-            .section-title h2 { font-size: 1.8rem; }
-            .about-text h3 { font-size: 1.6rem; }
-            .method-buttons { flex-direction: column; }
-            .method-btn { width: 100%; justify-content: center; }
-            .contact-info { 
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-            }
-            /* 页脚移动端优化 - 576px以下设计服务和联系方式并排 */
-            .footer-content { 
-                grid-template-columns: 1fr 1fr; 
-                grid-template-rows: auto auto;
-            }
-            .footer-about { 
-                grid-column: 1 / span 2; 
-                grid-row: 1;
-            }
-            .footer-contact { 
-                grid-column: 1; 
-                grid-row: 2;
-            }
-            .footer-links { 
-                grid-column: 2; 
-                grid-row: 2;
-            }
+        .footer-heading:after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 2px; 
+            background: var(--accent); 
         }
-        
-        @media (max-width: 400px) {
-            .hero h1 { font-size: 1.8rem; }
-            .section-title h2 { font-size: 1.7rem; }
-            .portfolio-item { height: 250px; }
-            .portfolio-overlay { padding: 15px; }
-            .portfolio-overlay h3 { font-size: 1.3rem; }
-            /* 非常小的屏幕调整布局 */
-            .footer-content { 
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto;
-            }
-            .footer-about { 
-                grid-column: 1; 
-                grid-row: 1;
-            }
-            .footer-contact { 
-                grid-column: 1; 
-                grid-row: 2;
-            }
-            .footer-links { 
-                grid-column: 1; 
-                grid-row: 3;
-            }
+        .footer-links li { 
+            list-style: none; 
+            margin-bottom: 10px; 
+        }
+        .footer-links a { 
+            color: #aaa; 
+            text-decoration: none; 
+            transition: color 0.3s ease; 
+            font-size: 0.95rem; 
+        }
+        .footer-links a:hover { 
+            color: var(--accent); 
+        }
+        .footer-contact p { 
+            display: flex; 
+            align-items: flex-start; 
+            margin-bottom: 12px; 
+            color: #aaa; 
+            font-size: 0.95rem; 
+        }
+        .footer-contact i { 
+            margin-right: 10px; 
+            color: var(--accent); 
+            min-width: 20px; 
+            padding-top: 3px; 
+        }
+        .wechat-account { 
+            display: block; 
+            margin-top: 5px; 
+            font-weight: 500; 
+            color: #e8d8c4; 
+        }
+        .copyright { 
+            text-align: center; 
+            padding-top: 25px; 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            color: #aaa; 
+            font-size: 0.9rem; 
         }
         
         /* 电话号码样式 */
@@ -390,6 +611,286 @@
         .plain-phone:hover { 
             color: var(--accent); 
             text-decoration: none; 
+        }
+        
+        /* 响应式设计 */
+        @media (min-width: 992px) {
+            .services-grid { 
+                grid-template-columns: repeat(4, 1fr); 
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 { 
+                font-size: 2.8rem; 
+            }
+            .about-content { 
+                flex-direction: column; 
+            }
+            .about-image { 
+                flex: 0 0 100%; 
+                max-width: 500px; 
+                margin: 0 auto 30px; 
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger { 
+                display: block; 
+            }
+            .nav-links {
+                position: fixed; 
+                top: 70px; 
+                left: -25%; 
+                width: 25%; 
+                height: calc(100vh - 70px);
+                background: var(--light); 
+                flex-direction: column; 
+                align-items: center; 
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { 
+                left: 0; 
+            }
+            .nav-links li { 
+                margin: 15px 0; 
+            }
+            .hero h1 { 
+                font-size: 2.3rem; 
+            }
+            .hero p { 
+                font-size: 1rem; 
+            }
+            .section { 
+                padding: 60px 0; 
+            }
+            .section-title { 
+                margin-bottom: 40px; 
+            }
+            .section-title h2 { 
+                font-size: 2rem; 
+            }
+            .portfolio-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .portfolio-item { 
+                height: 280px; 
+            }
+            .portfolio-overlay h3 { 
+                font-size: 1.4rem; 
+            }
+            .portfolio-overlay p { 
+                font-size: 0.9rem; 
+                margin-bottom: 15px; 
+            }
+            .testimonial-card { 
+                padding: 25px; 
+            }
+            .testimonial-text { 
+                font-size: 1rem; 
+            }
+            .service-card { 
+                padding: 25px 15px; 
+            }
+            /* 移动端优化：增大关闭按钮 */
+            .close-btn {
+                width: 45px;
+                height: 45px;
+                top: 20px;
+                right: 20px;
+            }
+            .close-btn i {
+                font-size: 1.5rem;
+            }
+            .portfolio-overlay .btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            /* 强制页脚布局在移动端 */
+            .footer-bottom-row {
+                flex-direction: row; 
+                gap: 0; 
+            }
+            .footer-links {
+                flex: 0 0 30%; 
+                margin-right: 15px; 
+                min-width: auto; 
+            }
+            .footer-contact {
+                flex: 1; 
+                min-width: auto; 
+            }
+            
+            /* 预约信息卡片在移动端垂直排列 */
+            .booking-info {
+                flex-direction: column;
+            }
+            .booking-card {
+                min-width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero { 
+                text-align: center; 
+            }
+            .hero-content { 
+                padding: 0 15px; 
+            }
+            .hero h1 { 
+                font-size: 2rem; 
+            }
+            .hero-btns { 
+                display: flex; 
+                flex-direction: column; 
+                gap: 15px; 
+            }
+            .btn, .btn-outline { 
+                width: 100%; 
+                margin: 5px 0; 
+            }
+            .section-title h2 { 
+                font-size: 1.8rem; 
+            }
+            .about-text h3 { 
+                font-size: 1.6rem; 
+            }
+            .method-buttons { 
+                flex-direction: column; 
+            }
+            .method-btn { 
+                width: 100%; 
+                justify-content: center; 
+            }
+            
+            /* 强制页脚布局在超小屏幕 */
+            .footer-bottom-row {
+                flex-wrap: nowrap; 
+            }
+            
+            .nav-links {
+                width: 40%;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .hero h1 { 
+                font-size: 1.8rem; 
+            }
+            .section-title h2 { 
+                font-size: 1.7rem; 
+            }
+            .portfolio-item { 
+                height: 250px; 
+            }
+            .portfolio-overlay { 
+                padding: 15px; 
+            }
+            .portfolio-overlay h3 { 
+                font-size: 1.3rem; 
+            }
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            margin-bottom: 20px;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .contact-info-modal {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(232, 216, 196, 0.3);
+            border-radius: 10px;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .modal-actions .btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--accent);
+        }
+        
+        /* 复制成功提示 */
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            z-index: 3000;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .copy-notification.show {
+            opacity: 1;
         }
     </style>
 </head>
@@ -404,7 +905,7 @@
                     <li><a href="#about">关于</a></li>
                     <li><a href="#services">服务</a></li>
                     <li><a href="#portfolio">作品集</a></li>
-                    <li><a href="#contact">联系</a></li>
+                    <li><a href="#contact">预约咨询</a></li>
                 </ul>
                 <div class="hamburger"><i class="fas fa-bars"></i></div>
             </nav>
@@ -471,7 +972,7 @@
         </div>
     </section>
 
-    <!-- 作品集区域 - 优化版 -->
+    <!-- 作品集区域 -->
     <section class="section" id="portfolio">
         <div class="container">
             <div class="section-title"><h2>精选作品</h2></div>
@@ -555,85 +1056,113 @@
         </div>
     </section>
 
-    <!-- 联系区域 -->
+    <!-- 预约咨询区域 - 优化版 -->
     <section class="section contact-section" id="contact">
         <div class="container">
-            <div class="section-title"><h2>联系我</h2></div>
+            <div class="section-title"><h2>预约咨询</h2></div>
             <div class="contact-container">
-                <p>如果您有任何设计需求或咨询，请通过以下方式联系我，我将尽快回复您。</p>
+                <p>欢迎光临工作室或通过以下方式联系我们，我们将为您提供专业的设计咨询服务</p>
                 
-                <div class="contact-info">
-                    <div class="contact-detail">
-                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="contact-text">
-                            <h4>工作室地址</h4>
+                <!-- 优化后的信息布局 -->
+                <div class="booking-info">
+                    <div class="booking-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> 工作室地址</h3>
+                        <div class="booking-details">
                             <p>浙江省金华市浦江县</p>
+                            <p>环境优雅，欢迎来访</p>
                         </div>
                     </div>
-                    <div class="contact-detail">
-                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-                        <div class="contact-text">
-                            <h4>联系电话</h4>
-                            <a href="tel:15755853147" class="plain-phone">15755853147</a>
-                        </div>
-                    </div>
-                    <div class="contact-detail">
-                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="contact-text">
-                            <h4>电子邮箱</h4>
-                            <a href="mailto:severin@foxmail.com" class="plain-phone">severin@foxmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-detail">
-                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
-                        <div class="contact-text">
-                            <h4>工作时间</h4>
-                            <p>周一至周五: 9:00-18:00（周二除外）</p>
-                            <p class="work-time">周末与节假日: 10:00-16:00 (需预约)</p>
+                    
+                    <div class="booking-card">
+                        <h3><i class="fas fa-clock"></i> 工作时间</h3>
+                        <div class="booking-details">
+                            <p>周一至周五: 9:00-17:00（周二除外）</p>
+                            <p>周末与节假日: 10:00-16:00（需预约）</p>
                         </div>
                     </div>
                 </div>
                 
+                <!-- 咨询按钮 -->
                 <div class="contact-methods">
-                    <h3>预约咨询</h3>
                     <div class="method-buttons">
                         <button class="method-btn"><i class="fab fa-weixin"></i> 微信咨询</button>
-                        <button class="method-btn"><i class="fas fa-phone"></i> 电话预约</button>
-                        <button class="method-btn"><i class="fas fa-envelope"></i> 邮件咨询</button>
+                        <button id="phoneBookingBtn" class="method-btn"><i class="fas fa-phone"></i> 电话预约</button>
+                        <button id="emailConsultBtn" class="method-btn"><i class="fas fa-envelope"></i> 邮件咨询</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 - 优化版 -->
+    <!-- 页脚 -->
     <footer>
         <div class="container">
             <div class="footer-content">
+                <!-- 第一行：工作室信息 -->
                 <div class="footer-about">
                     <div class="footer-logo">Severin<span>Design</span></div>
                     <p>创造有情感、有温度的空间设计，让每个空间都讲述独特的故事。</p>
                 </div>
-                <div class="footer-links">
-                    <h3 class="footer-heading">设计服务</h3>
-                    <ul>
-                        <li><a href="#">住宅设计</a></li>
-                        <li><a href="#">商业空间</a></li>
-                        <li><a href="#">空间规划</a></li>
-                        <li><a href="#">远程分析</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h3 class="footer-heading">联系方式</h3>
-                    <p><i class="fas fa-map-marker-alt"></i>浙江省金华市浦江县</p>
-                    <p><i class="fas fa-phone-alt"></i><a href="tel:15755853147" class="plain-phone">15755853147</a></p>
-                    <p><i class="fas fa-envelope"></i><a href="mailto:severin@foxmail.com" class="plain-phone">severin@foxmail.com</a></p>
-                    <p><i class="fab fa-weixin"></i><span class="wechat-account">SeverinDesign</span></p>
+                
+                <!-- 第二行：设计服务（左）和联系方式（右） -->
+                <div class="footer-bottom-row">
+                    <div class="footer-links">
+                        <h3 class="footer-heading">设计服务</h3>
+                        <ul>
+                            <li><a href="#">住宅设计</a></li>
+                            <li><a href="#">商业空间</a></li>
+                            <li><a href="#">空间规划</a></li>
+                            <li><a href="#">远程分析</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h3 class="footer-heading">联系方式</h3>
+                        <p><i class="fas fa-map-marker-alt"></i>浙江省金华市浦江县</p>
+                        <p><i class="fas fa-phone-alt"></i><a href="tel:15755853147" class="plain-phone">15755853147</a></p>
+                        <p><i class="fas fa-envelope"></i><a href="mailto:severin@foxmail.com" class="plain-phone">severin@foxmail.com</a></p>
+                        <p><i class="fab fa-weixin"></i><span class="wechat-account">SeverinDesign</span></p>
+                    </div>
                 </div>
             </div>
             <div class="copyright"><p>&copy; 2023 刘七设计工作室. 保留所有权利。</p></div>
         </div>
     </footer>
+
+    <!-- 电话预约模态框 -->
+    <div id="phoneModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h3>电话预约</h3>
+                <p>请拨打以下电话号码与我们联系</p>
+            </div>
+            <div class="contact-info-modal">15755853147</div>
+            <div class="modal-actions">
+                <a href="tel:15755853147" class="btn">立即拨打</a>
+                <button id="copyPhoneBtn" class="btn">复制号码</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 邮件咨询模态框 -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h3>邮件咨询</h3>
+                <p>请将您的需求发送至以下邮箱</p>
+            </div>
+            <div class="contact-info-modal">severin@foxmail.com</div>
+            <div class="modal-actions">
+                <a href="mailto:severin@foxmail.com" class="btn">发送邮件</a>
+                <button id="copyEmailBtn" class="btn">复制邮箱</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 复制成功提示 -->
+    <div id="copyNotification" class="copy-notification">已复制到剪贴板</div>
 
     <script>
         // 导航栏交互
@@ -645,8 +1174,13 @@
         // 滚动时导航栏效果
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
-            header.style.padding = window.scrollY > 50 ? '10px 0' : '15px 0';
-            header.style.boxShadow = window.scrollY > 50 ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '12px 0';
+                header.style.boxShadow = 'none';
+            }
         });
         
         // 平滑滚动
@@ -654,12 +1188,17 @@
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 navLinks.classList.remove('active');
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
             });
         });
         
         // 作品集交互优化
-        document.querySelectorAll('.portfolio-item').forEach(item => {
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        // 移动端交互：点击显示/隐藏详情
+        portfolioItems.forEach(item => {
             // 添加点击事件处理
             item.addEventListener('click', function(e) {
                 // 如果点击的是关闭按钮，则关闭覆盖层
@@ -673,7 +1212,6 @@
                     return;
                 }
                 
-                // 否则，切换覆盖层的显示状态
                 const overlay = this.querySelector('.portfolio-overlay');
                 
                 // 关闭所有其他覆盖层
@@ -694,6 +1232,91 @@
                 });
             }
         });
+        
+        // 触摸滑动支持 - 防止误操作
+        let touchStartX = 0;
+        let touchStartY = 0;
+        
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        });
+        
+        document.addEventListener('touchend', function(e) {
+            const touchEndX = e.changedTouches[0].screenX;
+            const touchEndY = e.changedTouches[0].screenY;
+            
+            // 如果是明显的滑动操作，则关闭覆盖层
+            if (Math.abs(touchEndX - touchStartX) > 10 || Math.abs(touchEndY - touchStartY) > 10) {
+                document.querySelectorAll('.portfolio-overlay').forEach(overlay => {
+                    overlay.classList.remove('active');
+                });
+            }
+        });
+        
+        // 电话预约模态框
+        const phoneModal = document.getElementById('phoneModal');
+        const emailModal = document.getElementById('emailModal');
+        const phoneBookingBtn = document.getElementById('phoneBookingBtn');
+        const emailConsultBtn = document.getElementById('emailConsultBtn');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        const copyPhoneBtn = document.getElementById('copyPhoneBtn');
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        const copyNotification = document.getElementById('copyNotification');
+        
+        // 打开电话预约模态框
+        phoneBookingBtn.addEventListener('click', function() {
+            phoneModal.style.display = 'flex';
+        });
+        
+        // 打开邮件咨询模态框
+        emailConsultBtn.addEventListener('click', function() {
+            emailModal.style.display = 'flex';
+        });
+        
+        // 关闭模态框
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                phoneModal.style.display = 'none';
+                emailModal.style.display = 'none';
+            });
+        });
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', function(e) {
+            if (e.target === phoneModal) {
+                phoneModal.style.display = 'none';
+            }
+            if (e.target === emailModal) {
+                emailModal.style.display = 'none';
+            }
+        });
+        
+        // 复制电话号码功能
+        copyPhoneBtn.addEventListener('click', function() {
+            copyToClipboard('15755853147');
+        });
+        
+        // 复制邮箱地址功能
+        copyEmailBtn.addEventListener('click', function() {
+            copyToClipboard('severin@foxmail.com');
+        });
+        
+        // 复制到剪贴板函数
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            // 显示复制成功提示
+            copyNotification.classList.add('show');
+            setTimeout(() => {
+                copyNotification.classList.remove('show');
+            }, 2000);
+        }
     </script>
 </body>
 </html>
