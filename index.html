@@ -32,7 +32,7 @@
             padding: 0 20px; 
         }
         
-        /* 导航栏 - 优化缝隙问题 */
+        /* 导航栏 */
         header {
             position: fixed; 
             top: 0; 
@@ -182,14 +182,14 @@
             background: var(--accent);
         }
         
-        /* 关于区域 */
+        /* 关于区域 - 照片缩小 */
         .about-content { 
             display: flex; 
             align-items: center; 
             gap: 40px; 
         }
         .about-image {
-            flex: 0 0 45%; 
+            flex: 0 0 35%; 
             border-radius: 10px; 
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
@@ -221,7 +221,7 @@
             display: block; 
         }
         
-        /* 服务区域 */
+        /* 服务区域 - 去除超链接样式 */
         .services { 
             background-color: #f5f1e9; 
         }
@@ -238,6 +238,10 @@
             transition: all 0.3s ease; 
             text-align: center; 
             padding: 30px 20px;
+            position: relative;
+            text-decoration: none; 
+            color: inherit; 
+            display: block;
         }
         .service-card:hover { 
             transform: translateY(-8px); 
@@ -253,11 +257,14 @@
             margin-bottom: 12px; 
             color: var(--dark); 
         }
+        .service-card p {
+            color: #555;
+        }
         
-        /* 作品集区域 - 优化版 */
+        /* 作品集区域 - 桌面端2x2布局 */
         .portfolio-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            grid-template-columns: repeat(2, minmax(320px, 1fr)); 
             gap: 20px; 
         }
         .portfolio-item {
@@ -275,7 +282,6 @@
             display: block;
             transition: transform 0.4s ease;
         }
-        /* 悬停时放大图片 */
         .portfolio-item:hover img {
             transform: scale(1.05);
         }
@@ -297,43 +303,20 @@
             color: white;
             pointer-events: none;
         }
-        /* 桌面悬停效果 */
-        @media (hover: hover) and (pointer: fine) {
-            .portfolio-item:hover .portfolio-overlay {
-                opacity: 1;
-                pointer-events: auto;
-            }
-            .portfolio-item:hover .portfolio-overlay h3, 
-            .portfolio-item:hover .portfolio-overlay p, 
-            .portfolio-item:hover .portfolio-overlay .btn {
-                transform: translateY(0);
-            }
-        }
-        .portfolio-overlay.active { 
-            opacity: 1; 
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
             pointer-events: auto;
         }
         .portfolio-overlay h3 { 
             font-size: 1.6rem; 
             margin-bottom: 10px; 
-            transform: translateY(20px);
-            transition: transform 0.4s ease;
         }
         .portfolio-overlay p { 
             margin-bottom: 20px; 
             font-size: 0.95rem; 
-            transform: translateY(20px);
-            transition: transform 0.4s ease 0.1s;
         }
         .portfolio-overlay .btn { 
-            transform: translateY(20px);
-            transition: transform 0.4s ease 0.2s;
-            pointer-events: auto; /* 确保按钮可点击 */
-        }
-        .portfolio-overlay.active h3, 
-        .portfolio-overlay.active p, 
-        .portfolio-overlay.active .btn {
-            transform: translateY(0);
+            pointer-events: auto;
         }
         
         /* 关闭按钮 */
@@ -412,7 +395,7 @@
             object-fit: cover; 
         }
         
-        /* 预约咨询区域 - 优化版 */
+        /* 预约咨询区域 */
         .contact-section { 
             padding: 80px 0; 
             background-color: var(--light); 
@@ -515,7 +498,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
         }
         
-        /* 页脚 - 强制布局 */
+        /* 页脚 - 确保并排显示 */
         footer { 
             background-color: var(--dark); 
             color: white; 
@@ -570,8 +553,11 @@
             height: 2px; 
             background: var(--accent); 
         }
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
         .footer-links li { 
-            list-style: none; 
             margin-bottom: 10px; 
         }
         .footer-links a { 
@@ -637,12 +623,16 @@
             }
             .about-image { 
                 flex: 0 0 100%; 
-                max-width: 500px; 
-                margin: 0 auto 30px; 
+                max-width: 400px; 
+                margin: 0 auto 20px; 
+            }
+            /* 作品集在平板端改为单列 */
+            .portfolio-grid { 
+                grid-template-columns: 1fr; 
             }
         }
         
-        /* 修复导航栏问题 - 重点修改部分 */
+        /* 移动端优化 */
         @media (max-width: 768px) {
             .hamburger { 
                 display: block; 
@@ -651,30 +641,29 @@
                 position: fixed; 
                 top: 70px; 
                 left: 0; 
-                width: 25%; 
+                width: 40%; 
                 height: calc(100vh - 70px);
                 background: var(--light); 
                 flex-direction: column; 
                 align-items: center; 
-                padding-top: 50px;
-                transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+                padding-top: 40px;
+                transition: transform 0.4s ease;
                 box-shadow: 0 0 20px rgba(0,0,0,0.1);
                 transform: translateX(-100%);
                 pointer-events: none;
-                overflow: hidden;
             }
             .nav-links.active { 
                 transform: translateX(0);
                 pointer-events: auto;
             }
             .nav-links li { 
-                margin: 15px 0; 
+                margin: 12px 0; 
                 width: 100%;
                 text-align: center;
             }
             .nav-links a {
                 display: block;
-                padding: 10px 0;
+                padding: 8px 0;
             }
             .hero h1 { 
                 font-size: 2.3rem; 
@@ -686,77 +675,65 @@
                 padding: 60px 0; 
             }
             .section-title { 
-                margin-bottom: 40px; 
+                margin-bottom: 30px; 
             }
             .section-title h2 { 
                 font-size: 2rem; 
-            }
-            .portfolio-grid { 
-                grid-template-columns: 1fr; 
+                padding-bottom: 10px;
             }
             .portfolio-item { 
                 height: 280px; 
-            }
-            .portfolio-overlay h3 { 
-                font-size: 1.4rem; 
-            }
-            .portfolio-overlay p { 
-                font-size: 0.9rem; 
-                margin-bottom: 15px; 
+                margin-bottom: 15px;
             }
             .testimonial-card { 
                 padding: 25px; 
+                margin: 15px;
             }
             .testimonial-text { 
                 font-size: 1rem; 
             }
             .service-card { 
                 padding: 25px 15px; 
+                margin-bottom: 15px;
             }
-            /* 移动端优化：增大关闭按钮 */
             .close-btn {
                 width: 45px;
                 height: 45px;
-                top: 20px;
-                right: 20px;
+                top: 15px;
+                right: 15px;
             }
             .close-btn i {
                 font-size: 1.5rem;
             }
-            .portfolio-overlay .btn {
-                padding: 15px 30px;
-                font-size: 1.1rem;
-            }
             
-            /* 强制页脚布局在移动端 */
+            /* 页脚布局 - 并排显示 */
             .footer-bottom-row {
-                flex-direction: row; 
-                gap: 0; 
-            }
-            .footer-links {
-                flex: 0 0 30%; 
-                margin-right: 15px; 
-                min-width: auto; 
-            }
-            .footer-contact {
-                flex: 1; 
-                min-width: auto; 
+                flex-direction: row;
+                gap: 20px;
             }
             
-            /* 预约信息卡片在移动端垂直排列 */
+            .footer-links {
+                flex: 0 0 45%;
+            }
+            
+            .footer-contact {
+                flex: 1;
+            }
+            
+            /* 预约卡片 */
             .booking-info {
                 flex-direction: column;
+                gap: 20px;
             }
             .booking-card {
                 min-width: 100%;
+                padding: 20px;
             }
             
             /* 工作时间文字优化 */
             .booking-details p {
                 font-size: 1rem;
-                letter-spacing: -0.2px;
-                word-spacing: -1px;
-                padding: 0 5px;
+                padding: 0;
             }
         }
         
@@ -793,20 +770,24 @@
                 justify-content: center; 
             }
             
-            /* 强制页脚布局在超小屏幕 */
-            .footer-bottom-row {
-                flex-wrap: nowrap; 
-            }
-            
-            /* 导航栏宽度调整为40% */
+            /* 导航栏宽度 */
             .nav-links {
-                width: 40%;
+                width: 50%;
             }
             
-            /* 工作时间文字优化 */
-            .booking-details p {
-                font-size: 0.95rem;
-                line-height: 1.5;
+            /* 作品集项目间距 */
+            .portfolio-item { 
+                height: 250px; 
+                margin-bottom: 10px;
+            }
+            
+            /* 页脚布局 - 确保并排显示 */
+            .footer-bottom-row {
+                gap: 15px;
+            }
+            
+            .footer-links {
+                flex: 0 0 45%;
             }
         }
         
@@ -818,22 +799,20 @@
                 font-size: 1.7rem; 
             }
             .portfolio-item { 
-                height: 250px; 
-            }
-            .portfolio-overlay { 
-                padding: 15px; 
-            }
-            .portfolio-overlay h3 { 
-                font-size: 1.3rem; 
+                height: 220px; 
             }
             .nav-links {
-                width: 50%;
+                width: 60%;
             }
             
-            /* 工作时间文字优化 */
-            .booking-details p {
-                font-size: 0.9rem;
-                line-height: 1.6;
+            /* 页脚布局 - 小屏幕调整 */
+            .footer-bottom-row {
+                flex-direction: row;
+                gap: 10px;
+            }
+            
+            .footer-links {
+                flex: 0 0 45%;
             }
         }
         
@@ -859,13 +838,6 @@
             max-width: 400px;
             text-align: center;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: modalFadeIn 0.3s ease;
-        }
-        
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         .modal-header {
@@ -912,11 +884,6 @@
             font-size: 1.5rem;
             color: #888;
             cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .close-modal:hover {
-            color: var(--accent);
         }
         
         /* 复制成功提示 */
@@ -933,7 +900,6 @@
             z-index: 3000;
             opacity: 0;
             transition: opacity 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .copy-notification.show {
@@ -954,6 +920,23 @@
         
         .nav-overlay.active {
             display: block;
+        }
+        
+        /* 微信二维码样式 */
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+        
+        .qr-placeholder {
+            color: #888;
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -990,7 +973,7 @@
         </div>
     </section>
 
-    <!-- 关于区域 -->
+    <!-- 关于区域 - 照片缩小 -->
     <section class="section" id="about">
         <div class="container">
             <div class="section-title"><h2>关于我</h2></div>
@@ -1009,92 +992,74 @@
         </div>
     </section>
 
-    <!-- 服务区域 -->
+    <!-- 服务区域 - 去除超链接样式 -->
     <section class="section services" id="services">
         <div class="container">
             <div class="section-title"><h2>我的服务</h2></div>
             <div class="services-grid">
-                <div class="service-card">
+                <a href="residential.html" class="service-card">
                     <div class="service-icon"><i class="fas fa-home"></i></div>
                     <h3>住宅设计</h3>
                     <p>公寓、别墅、复式等住宅空间的整体规划与设计，打造舒适宜居的生活环境。</p>
-                </div>
-                <div class="service-card">
+                </a>
+                <a href="commercial.html" class="service-card">
                     <div class="service-icon"><i class="fas fa-building"></i></div>
                     <h3>商业空间</h3>
                     <p>办公室、餐厅、零售店等商业空间设计，提升品牌形象与用户体验。</p>
-                </div>
-                <div class="service-card">
+                </a>
+                <a href="space-planning.html" class="service-card">
                     <div class="service-icon"><i class="fas fa-ruler-combined"></i></div>
                     <h3>空间规划</h3>
                     <p>优化空间布局，提升空间利用率，创造流畅的功能动线。</p>
-                </div>
-                <div class="service-card">
+                </a>
+                <a href="remote.html" class="service-card">
                     <div class="service-icon"><i class="fas fa-laptop"></i></div>
                     <h3>远程分析</h3>
                     <p>专业远程空间评估与设计方案，提供详细设计建议和3D可视化方案。</p>
-                </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- 作品集区域 -->
+    <!-- 作品集区域 - 桌面端2x2布局 -->
     <section class="section" id="portfolio">
         <div class="container">
             <div class="section-title"><h2>精选作品</h2></div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="现代客厅设计">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/28/f09d1a9c53a99df8.png" alt="现代客厅设计">
                     <div class="portfolio-overlay">
                         <div class="close-btn"><i class="fas fa-times"></i></div>
                         <h3>现代极简客厅</h3>
                         <p>中性色调与天然材料的完美融合，创造宁静舒适的空间</p>
-                        <a href="#" class="btn">查看详情</a>
+                        <a href="living.html" class="btn">查看详情</a>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="餐厅设计">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/28/7b03f82d473cf4be.png" alt="餐厅设计">
                     <div class="portfolio-overlay">
                         <div class="close-btn"><i class="fas fa-times"></i></div>
                         <h3>高级餐厅设计</h3>
                         <p>工业风与现代元素的结合，打造独特的用餐体验</p>
-                        <a href="#" class="btn">查看详情</a>
+                        <a href="dining.html" class="btn">查看详情</a>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="卧室设计">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/28/706cfd791d2e4682.png" alt="卧室设计">
                     <div class="portfolio-overlay">
                         <div class="close-btn"><i class="fas fa-times"></i></div>
                         <h3>温馨主卧套房</h3>
                         <p>柔和的色调与精致的细节，营造舒适的休憩空间</p>
-                        <a href="#" class="btn">查看详情</a>
+                        <a href="bedroom.html" class="btn">查看详情</a>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="办公空间">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/28/0cd81068effa3dcc.png" alt="办公空间">
                     <div class="portfolio-overlay">
                         <div class="close-btn"><i class="fas fa-times"></i></div>
                         <h3>创意办公空间</h3>
                         <p>开放式布局与灵活工作区，激发团队创造力</p>
-                        <a href="#" class="btn">查看详情</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="厨房设计">
-                    <div class="portfolio-overlay">
-                        <div class="close-btn"><i class="fas fa-times"></i></div>
-                        <h3>现代开放式厨房</h3>
-                        <p>功能性与美观性的完美平衡，家庭生活的核心区域</p>
-                        <a href="#" class="btn">查看详情</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="浴室设计">
-                    <div class="portfolio-overlay">
-                        <div class="close-btn"><i class="fas fa-times"></i></div>
-                        <h3>豪华主卫设计</h3>
-                        <p>天然石材与精致五金，打造水疗般的沐浴体验</p>
-                        <a href="#" class="btn">查看详情</a>
+                        <a href="office.html" class="btn">查看详情</a>
                     </div>
                 </div>
             </div>
@@ -1122,14 +1087,13 @@
         </div>
     </section>
 
-    <!-- 预约咨询区域 - 优化版 -->
+    <!-- 预约咨询区域 -->
     <section class="section contact-section" id="contact">
         <div class="container">
             <div class="section-title"><h2>预约咨询</h2></div>
             <div class="contact-container">
                 <p>欢迎光临工作室或通过以下方式联系我们，我们将为您提供专业的设计咨询服务</p>
                 
-                <!-- 优化后的信息布局 -->
                 <div class="booking-info">
                     <div class="booking-card">
                         <h3><i class="fas fa-map-marker-alt"></i> 工作室地址</h3>
@@ -1148,10 +1112,9 @@
                     </div>
                 </div>
                 
-                <!-- 咨询按钮 -->
                 <div class="contact-methods">
                     <div class="method-buttons">
-                        <button class="method-btn"><i class="fab fa-weixin"></i> 微信咨询</button>
+                        <button id="wechatConsultBtn" class="method-btn"><i class="fab fa-weixin"></i> 微信咨询</button>
                         <button id="phoneBookingBtn" class="method-btn"><i class="fas fa-phone"></i> 电话预约</button>
                         <button id="emailConsultBtn" class="method-btn"><i class="fas fa-envelope"></i> 邮件咨询</button>
                     </div>
@@ -1160,25 +1123,23 @@
         </div>
     </section>
 
-    <!-- 页脚 -->
+    <!-- 页脚 - 确保并排显示 -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <!-- 第一行：工作室信息 -->
                 <div class="footer-about">
                     <div class="footer-logo">Severin<span>Design</span></div>
                     <p>创造有情感、有温度的空间设计，让每个空间都讲述独特的故事。</p>
                 </div>
                 
-                <!-- 第二行：设计服务（左）和联系方式（右） -->
                 <div class="footer-bottom-row">
                     <div class="footer-links">
                         <h3 class="footer-heading">设计服务</h3>
                         <ul>
-                            <li><a href="#">住宅设计</a></li>
-                            <li><a href="#">商业空间</a></li>
-                            <li><a href="#">空间规划</a></li>
-                            <li><a href="#">远程分析</a></li>
+                            <li><a href="residential.html">住宅设计</a></li>
+                            <li><a href="commercial.html">商业空间</a></li>
+                            <li><a href="space-planning.html">空间规划</a></li>
+                            <li><a href="remote.html">远程分析</a></li>
                         </ul>
                     </div>
                     
@@ -1223,6 +1184,25 @@
             <div class="modal-actions">
                 <a href="mailto:severin@foxmail.com" class="btn">发送邮件</a>
                 <button id="copyEmailBtn" class="btn">复制邮箱</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 微信咨询模态框 - 添加两个按钮 -->
+    <div id="wechatModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h3>微信咨询</h3>
+                <p>扫描二维码添加微信</p>
+            </div>
+            <div class="qr-code">
+                <div class="qr-placeholder">微信二维码</div>
+            </div>
+            <p style="margin: 15px 0; font-weight: 500;">微信号: SeverinDesign</p>
+            <div class="modal-actions">
+                <button id="addWechatBtn" class="btn">添加微信</button>
+                <button id="copyWechatBtn" class="btn">复制微信号</button>
             </div>
         </div>
     </div>
@@ -1277,34 +1257,23 @@
         // 作品集交互优化
         const portfolioItems = document.querySelectorAll('.portfolio-item');
         
-        // 移动端交互：点击显示/隐藏详情
         portfolioItems.forEach(item => {
-            // 添加点击事件处理
             item.addEventListener('click', function(e) {
-                // 如果点击的是关闭按钮，则关闭覆盖层
                 if (e.target.closest('.close-btn')) {
                     this.querySelector('.portfolio-overlay').classList.remove('active');
                     return;
                 }
                 
-                // 如果点击的是查看详情按钮，则跳转
-                if (e.target.closest('.btn')) {
-                    return;
-                }
+                if (e.target.closest('.btn')) return;
                 
                 const overlay = this.querySelector('.portfolio-overlay');
-                
-                // 关闭所有其他覆盖层
                 document.querySelectorAll('.portfolio-overlay').forEach(ol => {
                     if (ol !== overlay) ol.classList.remove('active');
                 });
-                
-                // 切换当前覆盖层
                 overlay.classList.toggle('active');
             });
         });
         
-        // 点击页面其他地方关闭所有覆盖层
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.portfolio-item')) {
                 document.querySelectorAll('.portfolio-overlay').forEach(overlay => {
@@ -1313,73 +1282,50 @@
             }
         });
         
-        // 触摸滑动支持 - 防止误操作
-        let touchStartX = 0;
-        let touchStartY = 0;
-        
-        document.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
-        });
-        
-        document.addEventListener('touchend', function(e) {
-            const touchEndX = e.changedTouches[0].screenX;
-            const touchEndY = e.changedTouches[0].screenY;
-            
-            // 如果是明显的滑动操作，则关闭覆盖层
-            if (Math.abs(touchEndX - touchStartX) > 10 || Math.abs(touchEndY - touchStartY) > 10) {
-                document.querySelectorAll('.portfolio-overlay').forEach(overlay => {
-                    overlay.classList.remove('active');
-                });
-            }
-        });
-        
-        // 电话预约模态框
+        // 预约咨询模态框
         const phoneModal = document.getElementById('phoneModal');
         const emailModal = document.getElementById('emailModal');
+        const wechatModal = document.getElementById('wechatModal');
         const phoneBookingBtn = document.getElementById('phoneBookingBtn');
         const emailConsultBtn = document.getElementById('emailConsultBtn');
+        const wechatConsultBtn = document.getElementById('wechatConsultBtn');
         const closeModalButtons = document.querySelectorAll('.close-modal');
         const copyPhoneBtn = document.getElementById('copyPhoneBtn');
         const copyEmailBtn = document.getElementById('copyEmailBtn');
+        const addWechatBtn = document.getElementById('addWechatBtn');
+        const copyWechatBtn = document.getElementById('copyWechatBtn');
         const copyNotification = document.getElementById('copyNotification');
         
-        // 打开电话预约模态框
-        phoneBookingBtn.addEventListener('click', function() {
-            phoneModal.style.display = 'flex';
-        });
-        
-        // 打开邮件咨询模态框
-        emailConsultBtn.addEventListener('click', function() {
-            emailModal.style.display = 'flex';
-        });
+        // 打开模态框
+        phoneBookingBtn.addEventListener('click', () => phoneModal.style.display = 'flex');
+        emailConsultBtn.addEventListener('click', () => emailModal.style.display = 'flex');
+        wechatConsultBtn.addEventListener('click', () => wechatModal.style.display = 'flex');
         
         // 关闭模态框
         closeModalButtons.forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', () => {
                 phoneModal.style.display = 'none';
                 emailModal.style.display = 'none';
+                wechatModal.style.display = 'none';
             });
         });
         
         // 点击模态框外部关闭
-        window.addEventListener('click', function(e) {
-            if (e.target === phoneModal) {
-                phoneModal.style.display = 'none';
-            }
-            if (e.target === emailModal) {
-                emailModal.style.display = 'none';
-            }
+        window.addEventListener('click', (e) => {
+            if (e.target === phoneModal) phoneModal.style.display = 'none';
+            if (e.target === emailModal) emailModal.style.display = 'none';
+            if (e.target === wechatModal) wechatModal.style.display = 'none';
         });
         
-        // 复制电话号码功能
-        copyPhoneBtn.addEventListener('click', function() {
-            copyToClipboard('15755853147');
-        });
+        // 复制功能
+        copyPhoneBtn.addEventListener('click', () => copyToClipboard('15755853147'));
+        copyEmailBtn.addEventListener('click', () => copyToClipboard('severin@foxmail.com'));
+        copyWechatBtn.addEventListener('click', () => copyToClipboard('SeverinDesign'));
         
-        // 复制邮箱地址功能
-        copyEmailBtn.addEventListener('click', function() {
-            copyToClipboard('severin@foxmail.com');
+        // 添加微信按钮
+        addWechatBtn.addEventListener('click', () => {
+            copyToClipboard('SeverinDesign');
+            window.location.href = 'weixin://';
         });
         
         // 复制到剪贴板函数
