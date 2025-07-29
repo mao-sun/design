@@ -654,6 +654,14 @@
                 padding: 0 15px; 
                 margin-top: 70px;
             }
+            .info-icon {
+        display: none;
+    }
+    
+    /* 调整文本的边距，因为图标被隐藏了 */
+    .info-text {
+        margin-left: 0;
+    }
             .hero h1 { 
                 font-size: 2rem; 
             }
@@ -920,6 +928,514 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        /* 新增：预约咨询模态框样式 */
+        .appointment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            overflow: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .appointment-content {
+            background: white;
+            max-width: 600px;
+            margin: 60px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalFade 0.4s ease;
+        }
+        
+        .appointment-header {
+            background: var(--dark);
+            color: white;
+            padding: 25px 30px;
+            position: relative;
+        }
+        
+        .appointment-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .appointment-header p {
+            color: var(--light-accent);
+            font-size: 1rem;
+        }
+        
+        .close-appointment {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: transparent;
+            border: none;
+        }
+        
+        .close-appointment:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+        
+        .appointment-details {
+            padding: 30px;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.3rem;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+        
+        .info-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .info-text p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .contact-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px;
+            text-align: center;
+            background: var(--primary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--secondary);
+        }
+        
+        .contact-btn:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-btn i {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .contact-btn h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .contact-btn p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        /* 电话咨询模态框 - 使用主色调 */
+        .phone-modal {
+            display: none;
+            position: fixed;
+            top: 0;  /* 修复: 逗号改为分号 */
+            left: 0; /* 修复: 逗号改为分号 */
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2100;
+            overflow: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .phone-content {
+            background: white;
+            max-width: 500px;
+            margin: 80px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalFade 0.4s ease;
+        }
+        
+        .phone-header {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 25px 30px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .phone-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .back-to-appointment {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            font-size: 1.3rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+            background: transparent;
+            border: none;
+        }
+        
+        .back-to-appointment:hover {
+            color: var(--dark);
+            transform: translateX(-3px);
+        }
+        
+        .phone-details {
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .phone-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        
+        .phone-number {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--dark);
+            letter-spacing: 1px;
+        }
+        
+        .call-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+        }
+        
+        .call-btn:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* 微信咨询模态框 - 使用主色调 */
+        .wechat-modal {
+            display: none;
+            position: fixed;
+            top: 0;  /* 修复: 逗号改为分号 */
+            left: 0; /* 修复: 逗号改为分号 */
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2100;
+            overflow: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .wechat-content {
+            background: white;
+            max-width: 500px;
+            margin: 80px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalFade 0.4s ease;
+        }
+        
+        .wechat-header {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 25px 30px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .wechat-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .wechat-details {
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 25px;
+            background: #f1f1f1;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 15px;
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .wechat-id {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+        
+        /* 邮件咨询模态框 - 使用主色调 */
+        .email-modal {
+            display: none;
+            position: fixed;
+            top: 0;  /* 修复: 逗号改为分号 */
+            left: 0; /* 修复: 逗号改为分号 */
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2100;
+            overflow: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .email-content {
+            background: white;
+            max-width: 500px;
+            margin: 80px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalFade 0.4s ease;
+        }
+        
+        .email-header {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 25px 30px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .email-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .email-details {
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .email-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        
+        .email-address {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--dark);
+            word-break: break-all;
+        }
+        
+        .email-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+            margin: 0 10px;
+        }
+        
+        .email-btn:hover {
+            background: transparent;
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* 复制成功提示 */
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            z-index: 3000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .copy-notification.show {
+            opacity: 1;
+        }
+        
+        /* 二级弹窗返回按钮样式 */
+        .back-to-appointment {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            font-size: 1.3rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+            background: transparent;
+            border: none;
+        }
+        
+        .back-to-appointment:hover {
+            color: var(--dark);
+            transform: translateX(-3px);
+        }
+        
+        /* 二级弹窗头部样式 */
+        .phone-header, .wechat-header, .email-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .phone-header h3, .wechat-header h3, .email-header h3 {
+            margin: 0;
+            padding: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-methods {
+                flex-direction: column;
+            }
+            
+            .contact-btn {
+                min-width: 100%;
+            }
+            
+            .phone-number {
+                font-size: 1.6rem;
+            }
+            
+            .email-address {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .appointment-content, 
+            .phone-content,
+            .wechat-content,
+            .email-content {
+                margin: 30px auto;
+            }
+            
+            .appointment-details, 
+            .phone-details,
+            .wechat-details,
+            .email-details {
+                padding: 20px;
+            }
+            
+            .info-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .info-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .phone-icon,
+            .email-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .phone-number {
+                font-size: 1.4rem;
+            }
+            
+            .qr-code {
+                width: 180px;
+                height: 180px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -947,7 +1463,7 @@
             <p>专业客厅设计方案，融合美学与功能，为您打造梦想中的家庭核心区域</p>
             <div class="hero-btns">
                 <a href="#portfolio" class="btn">浏览作品</a>
-                <a href="#contact" class="btn btn-outline">预约咨询</a>
+                <a href="#" id="appointmentBtn" class="btn btn-outline">预约咨询</a>
             </div>
         </div>
     </section>
@@ -1248,6 +1764,119 @@
             </div>
         </div>
     </div>
+    
+    <!-- 预约咨询模态框 -->
+    <div id="appointmentModal" class="appointment-modal">
+        <div class="appointment-content">
+            <div class="appointment-header">
+                <h3>预约设计咨询</h3>
+                <p>选择最适合您的咨询方式</p>
+                <button class="close-appointment"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="appointment-details">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>工作室地点</h4>
+                        <p>浙江省金华市浦江县<br>提供远程设计服务</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>工作时间</h4>
+                        <p>周一至周五: 9:00-17:00（周二除外）<br>周末与节假日: 10:00-16:00（需预约）</p>
+                    </div>
+                </div>
+                
+                <h4 style="margin: 25px 0 15px; color: var(--dark);">咨询方式</h4>
+                <div class="contact-methods">
+                    <div class="contact-btn" id="phoneConsultBtn">
+                        <i class="fas fa-phone-alt"></i>
+                        <h4>电话咨询</h4>
+                        <p>直接与设计师沟通</p>
+                    </div>
+                    
+                    <div class="contact-btn" id="wechatConsultBtn">
+                        <i class="fab fa-weixin"></i>
+                        <h4>微信咨询</h4>
+                        <p>SeverinDesign</p>
+                    </div>
+                    
+                    <div class="contact-btn" id="emailConsultBtn">
+                        <i class="fas fa-envelope"></i>
+                        <h4>邮件咨询</h4>
+                        <p>severin@foxmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 电话咨询模态框 -->
+    <div id="phoneModal" class="phone-modal">
+        <div class="phone-content">
+            <div class="phone-header">
+                <button class="back-to-appointment"><i class="fas fa-arrow-left"></i></button>
+                <h3>电话咨询</h3>
+                <!-- 移除了关闭按钮 -->
+            </div>
+            <div class="phone-details">
+                <div class="phone-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="phone-number">157 5585 3147</div>
+                <a href="tel:15755853147" class="call-btn">立即拨打</a>
+                <p style="margin-top: 20px; color: #777;">工作日 9:00-18:00 接受咨询</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 微信咨询模态框 -->
+    <div id="wechatModal" class="wechat-modal">
+        <div class="wechat-content">
+            <div class="wechat-header">
+                <button class="back-to-appointment"><i class="fas fa-arrow-left"></i></button>
+                <h3>微信咨询</h3>
+                <!-- 移除了关闭按钮 -->
+            </div>
+            <div class="wechat-details">
+                <div class="qr-code">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/29/c30149142fc9b3e3.png" alt="微信二维码">
+                </div>
+                <div class="wechat-id">SeverinDesign</div>
+                <button id="copyWechatBtn" class="call-btn">复制微信号</button>
+                <p style="margin-top: 20px; color: #777;">扫描二维码或复制微信号添加</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 邮件咨询模态框 -->
+    <div id="emailModal" class="email-modal">
+        <div class="email-content">
+            <div class="email-header">
+                <button class="back-to-appointment"><i class="fas fa-arrow-left"></i></button>
+                <h3>邮件咨询</h3>
+                <!-- 移除了关闭按钮 -->
+            </div>
+            <div class="email-details">
+                <div class="email-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="email-address">severin@foxmail.com</div>
+                <a href="mailto:severin@foxmail.com" class="email-btn">发送邮件</a>
+                <button id="copyEmailBtn" class="email-btn">复制邮箱</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 复制成功提示 -->
+    <div id="copyNotification" class="copy-notification">已复制到剪贴板</div>
 
     <script>
         // 导航栏交互
@@ -1407,6 +2036,100 @@
             item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(item);
         });
+        
+        // 新增：预约咨询弹窗功能
+        const appointmentBtn = document.getElementById('appointmentBtn');
+        const appointmentModal = document.getElementById('appointmentModal');
+        const phoneModal = document.getElementById('phoneModal');
+        const wechatModal = document.getElementById('wechatModal');
+        const emailModal = document.getElementById('emailModal');
+        const closeAppointment = document.querySelectorAll('.close-appointment');
+        const phoneConsultBtn = document.getElementById('phoneConsultBtn');
+        const wechatConsultBtn = document.getElementById('wechatConsultBtn');
+        const emailConsultBtn = document.getElementById('emailConsultBtn');
+        const backToAppointment = document.querySelectorAll('.back-to-appointment');
+        const copyWechatBtn = document.getElementById('copyWechatBtn');
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        const copyNotification = document.getElementById('copyNotification');
+        
+        // 打开预约咨询弹窗
+        appointmentBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            appointmentModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // 打开电话咨询弹窗
+        phoneConsultBtn.addEventListener('click', () => {
+            phoneModal.style.display = 'block';
+        });
+        
+        // 打开微信咨询弹窗
+        wechatConsultBtn.addEventListener('click', () => {
+            wechatModal.style.display = 'block';
+        });
+        
+        // 打开邮件咨询弹窗
+        emailConsultBtn.addEventListener('click', () => {
+            emailModal.style.display = 'block';
+        });
+        
+        // 返回预约咨询弹窗
+        backToAppointment.forEach(btn => {
+            btn.addEventListener('click', () => {
+                phoneModal.style.display = 'none';
+                wechatModal.style.display = 'none';
+                emailModal.style.display = 'none';
+            });
+        });
+        
+        // 关闭弹窗
+        closeAppointment.forEach(btn => {
+            btn.addEventListener('click', () => {
+                appointmentModal.style.display = 'none';
+                phoneModal.style.display = 'none';
+                wechatModal.style.display = 'none';
+                emailModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // 点击弹窗外部关闭
+        window.addEventListener('click', (e) => {
+            if (e.target === appointmentModal) {
+                appointmentModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            if (e.target === phoneModal) {
+                phoneModal.style.display = 'none';
+            }
+            if (e.target === wechatModal) {
+                wechatModal.style.display = 'none';
+            }
+            if (e.target === emailModal) {
+                emailModal.style.display = 'none';
+            }
+        });
+        
+        // 复制功能
+        copyWechatBtn.addEventListener('click', () => copyToClipboard('SeverinDesign'));
+        copyEmailBtn.addEventListener('click', () => copyToClipboard('severin@foxmail.com'));
+        
+        // 复制到剪贴板函数
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            // 显示复制成功提示
+            copyNotification.classList.add('show');
+            setTimeout(() => {
+                copyNotification.classList.remove('show');
+            }, 2000);
+        }
     </script>
 </body>
 </html>
