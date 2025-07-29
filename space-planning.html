@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>空间规划 | Severin Design</title>
+    <title>专业空间规划服务 | Severin Design</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -1069,7 +1069,7 @@
         </div>
     </footer>
 
-    <!-- 预约表单弹窗 - 已修复提交功能 -->
+    <!-- 预约表单弹窗 - 修复提交功能 -->
     <div id="appointmentModal" class="modal">
         <div class="modal-content">
             <div class="close-modal"><i class="fas fa-times"></i></div>
@@ -1077,7 +1077,7 @@
                 <h3>空间规划咨询预约</h3>
                 <p>请填写以下信息，我们将尽快与您联系</p>
             </div>
-            <form class="appointment-form" id="appointmentForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSc7QurBYawWp08Y1hg5-CrzqjhIeY_babYud8FGq8d_pd4_8w/formResponse" method="POST" target="hiddenIframe">
+            <form class="appointment-form" id="appointmentForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSc7QurBYawWp08Y1hg5-CrzqjhIeY_babYud8FGq8d_pd4_8w/formResponse" method="POST">
                 <div class="form-group">
                     <label for="area">您的房屋面积（㎡）<span style="color: red;">*</span></label>
                     <input type="number" id="area" name="entry.1154381800" min="1" max="1000" required>
@@ -1120,9 +1120,6 @@
             </form>
         </div>
     </div>
-    
-    <!-- 用于表单提交的隐藏iframe -->
-    <iframe name="hiddenIframe" style="display:none;"></iframe>
 
     <script>
         // 导航栏交互
@@ -1204,34 +1201,54 @@
         
         // 表单提交处理 - 修复提交问题
         appointmentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             // 验证表单
             if (!this.checkValidity()) {
                 alert('请填写所有必填字段');
                 return;
             }
             
-            // 显示提交成功信息
-            const successMessage = document.createElement('div');
-            successMessage.innerHTML = `
-                <div style="text-align:center; padding:30px;">
-                    <i class="fas fa-check-circle" style="font-size: 50px; color: green; margin-bottom: 20px;"></i>
-                    <h3>提交成功！</h3>
-                    <p>我们将尽快与您联系，请保持电话畅通。</p>
-                </div>
-            `;
+            // 创建表单数据对象
+            const formData = new FormData(this);
             
-            // 替换表单内容
-            this.parentNode.replaceChild(successMessage, this);
-            
-            // 3秒后关闭弹窗
-            setTimeout(() => {
-                appointmentModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                // 重置表单状态
-                appointmentForm.reset();
-                // 恢复表单显示
-                successMessage.replaceWith(appointmentForm);
-            }, 3000);
+            // 使用Fetch API提交表单数据
+            fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSc7QurBYawWp08Y1hg5-CrzqjhIeY_babYud8FGq8d_pd4_8w/formResponse', {
+                method: 'POST',
+                mode: 'no-cors', // 解决跨域问题
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // 显示提交成功信息
+                const successMessage = document.createElement('div');
+                successMessage.innerHTML = `
+                    <div style="text-align:center; padding:30px;">
+                        <i class="fas fa-check-circle" style="font-size: 50px; color: green; margin-bottom: 20px;"></i>
+                        <h3>提交成功！</h3>
+                        <p>我们将尽快与您联系，请保持电话畅通。</p>
+                    </div>
+                `;
+                
+                // 替换表单内容
+                this.parentNode.replaceChild(successMessage, this);
+                
+                // 3秒后关闭弹窗
+                setTimeout(() => {
+                    appointmentModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    // 重置表单状态
+                    appointmentForm.reset();
+                    // 恢复表单显示
+                    successMessage.replaceWith(appointmentForm);
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('表单提交错误:', error);
+                alert('提交失败，请稍后重试或直接联系我们');
+            });
         });
     </script>
 </body>
