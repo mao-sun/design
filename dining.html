@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeverinDesign | 专业餐厅设计作品集</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e8d8c4; 
+            --secondary: #c7b7a3; 
+            --accent: #d4b483; 
+            --light-accent: rgba(240, 210, 160, 0.85);
+            --dark: #3c3633; 
+            --light: #f8f5f0;
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Montserrat', 'Segoe UI', 'PingFang SC', sans-serif; 
+        }
+        body { 
+            background: var(--light); 
+            color: var(--dark); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+        
+        /* 导航栏 */
+        header {
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 1000;
+            background: rgba(248, 245, 240, 0.95); 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 0; 
+            transition: var(--transition);
+        }
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: relative;
+        }
+        .logo { 
+            font-family: 'Playfair Display', serif;
+            font-size: 28px; 
+            font-weight: 700; 
+            color: var(--dark); 
+            text-decoration: none; 
+            letter-spacing: 0.5px;
+        }
+        .logo span { 
+            color: var(--accent); 
+        }
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+        }
+        .nav-links li { 
+            margin-left: 30px; 
+        }
+        .nav-links a {
+            text-decoration: none; 
+            color: var(--dark); 
+            font-weight: 500; 
+            font-size: 16px;
+            position: relative; 
+            transition: color 0.3s ease;
+        }
+        .nav-links a:after {
+            content: ''; 
+            position: absolute; 
+            bottom: -5px; 
+            left: 0; 
+            width: 0; 
+            height: 2px;
+            background: var(--accent); 
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover:after { 
+            width: 100%; 
+        }
+        .nav-links a:hover { 
+            color: var(--accent); 
+        }
+        .hamburger { 
+            display: none; 
+            cursor: pointer; 
+            font-size: 1.5rem; 
+            color: var(--dark); 
+            z-index: 1001;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            height: 70vh; 
+            display: flex; 
+            align-items: center; 
+            position: relative;
+            background: linear-gradient(rgba(60, 54, 51, 0.3), rgba(60, 54, 51, 0.7)), 
+                       url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed;
+            color: white;
+        }
+        .hero-content { 
+            max-width: 650px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            text-align: center; 
+            margin-top: 50px;
+        }
+        .hero h1 { 
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem; 
+            font-weight: 600; 
+            margin-bottom: 20px; 
+            line-height: 1.2; 
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .hero p { 
+            font-size: 1.25rem; 
+            margin-bottom: 30px; 
+            font-weight: 300; 
+            max-width: 600px; 
+            margin: 0 auto 30px;
+            letter-spacing: 0.5px;
+        }
+        .btn {
+            display: inline-block; 
+            padding: 12px 30px; 
+            background: var(--accent); 
+            color: white;
+            text-decoration: none; 
+            border-radius: 30px; 
+            font-weight: 500; 
+            transition: var(--transition);
+            border: 2px solid var(--accent); 
+            margin: 5px;
+        }
+        .btn:hover { 
+            background: transparent; 
+            color: var(--accent); 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+        }
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid white; 
+        }
+        .btn-outline:hover { 
+            background: white; 
+            color: var(--dark); 
+        }
+        
+        /* 通用区域样式 */
+        .section { 
+            padding: 80px 0; 
+        }
+        .section-title { 
+            text-align: center; 
+            margin-bottom: 50px; 
+        }
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem; 
+            color: var(--dark); 
+            display: inline-block; 
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title h2:after {
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%);
+            width: 80px; 
+            height: 3px; 
+            background: var(--accent);
+        }
+        
+        /* 作品集区域 */
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 30px; 
+        }
+        .portfolio-item {
+            position: relative; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            height: 380px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        .portfolio-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block;
+            transition: var(--transition);
+        }
+        /* 悬停时放大图片 */
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        .portfolio-overlay {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(to top, rgba(60, 54, 51, 0.8), transparent 50%);
+            display: flex; 
+            flex-direction: column;
+            justify-content: flex-end; 
+            padding: 25px; 
+            text-align: left; 
+            color: white;
+            pointer-events: none;
+        }
+        .portfolio-overlay h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 8px; 
+            transform: translateY(10px);
+            transition: var(--transition);
+        }
+        .portfolio-overlay p { 
+            margin-bottom: 15px; 
+            font-size: 0.95rem; 
+            transform: translateY(10px);
+            transition: var(--transition) 0.1s;
+            opacity: 0.9;
+        }
+        .portfolio-overlay .category {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            transform: translateY(10px);
+            transition: var(--transition) 0.2s;
+        }
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p,
+        .portfolio-item:hover .portfolio-overlay .category {
+            transform: translateY(0);
+        }
+        
+        /* 设计理念区域 */
+        .philosophy-section {
+            background: #f5f1e9;
+            padding: 80px 0;
+        }
+        .philosophy-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .philosophy-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            padding: 30px;
+            text-align: center;
+        }
+        .philosophy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+        .philosophy-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+        .philosophy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        .philosophy-card p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        /* 设计师区域 */
+        .designer-section {
+            background: url('https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            position: relative;
+        }
+        .designer-overlay {
+            background: rgba(60, 54, 51, 0.85);
+            padding: 80px 0;
+        }
+        .designer-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .designer-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+        .designer-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-top: 30px;
+            display: block;
+        }
+        
+        /* 页脚优化 - 与living.html完全一致 */
+        footer { 
+            background-color: var(--dark); 
+            color: white; 
+            padding: 60px 0 25px; 
+        }
+        .footer-content { 
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 40px; 
+        }
+        .footer-about { 
+            width: 100%;
+        }
+        .footer-logo { 
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem; 
+            font-weight: 700; 
+            margin-bottom: 15px; 
+            color: white; 
+        }
+        .footer-logo span { 
+            color: var(--accent); 
+        }
+        .footer-about p { 
+            margin-bottom: 20px; 
+            color: #aaa; 
+            font-size: 0.95rem; 
+        }
+        
+        /* 强制并排显示，不换行，不加滚动条 */
+        .footer-bottom-row {
+            display: flex;
+            width: 100%;
+            gap: 20px; /* 减小默认间隔 */
+            flex-wrap: nowrap; /* 强制不换行 */
+            overflow: visible; /* 禁止滚动条 */
+        }
+        
+        .footer-links, 
+        .footer-contact {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-heading { 
+            font-size: 1.3rem; 
+            margin-bottom: 20px; 
+            position: relative; 
+            padding-bottom: 10px; 
+        }
+        .footer-heading:after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 2px; 
+            background: var(--accent); 
+        }
+        
+        /* 设计服务部分 - 优化高度 */
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li { 
+            margin-bottom: 12px;
+            height: 32px; /* 固定高度确保对齐 */
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a { 
+            color: #aaa; 
+            text-decoration: none; 
+            transition: color 0.3s ease; 
+            font-size: 0.95rem; 
+            display: block;
+            padding: 6px 0; /* 增加垂直内边距 */
+        }
+        
+        .footer-links a:hover { 
+            color: var(--accent); 
+        }
+        
+        /* 联系方式部分 - 优化对齐 */
+        .footer-contact p { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 12px; 
+            color: #aaa; 
+            font-size: 0.95rem; 
+            min-height: 32px; /* 与左侧高度匹配 */
+        }
+        
+        .footer-contact i { 
+            margin-right: 10px; 
+            color: var(--accent); 
+            min-width: 20px; 
+            text-align: center; /* 图标居中 */
+            font-size: 1rem; /* 统一图标大小 */
+        }
+        
+        .wechat-account { 
+            display: block; 
+            margin-top: 5px; 
+            font-weight: 500; 
+            color: #e8d8c4; 
+        }
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 25px; 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            color: #aaa; 
+            font-size: 0.9rem; 
+        }
+        
+        /* 电话号码链接样式 */
+        .phone-link {
+            color: #aaa !important; 
+            text-decoration: none !important; 
+            transition: color 0.3s ease; 
+            cursor: pointer; 
+        }
+
+        .phone-link:hover {
+            color: var(--accent) !important; 
+        }
+
+        a[href^="tel"] {
+            color: #aaa !important;
+            text-decoration: none !important;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .hero h1 { 
+                font-size: 2.8rem; 
+            }
+            .section { 
+                padding: 70px 0; 
+            }
+            .hero {
+                height: 60vh;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger { 
+                display: block; 
+            }
+            .nav-links {
+                position: fixed; 
+                top: 70px; 
+                left: 0; 
+                width: 25%; 
+                height: calc(100vh - 70px);
+                background: var(--light); 
+                flex-direction: column; 
+                align-items: center; 
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
+                transform: translateX(-100%);
+                pointer-events: none;
+                overflow: hidden;
+            }
+            .nav-links.active { 
+                transform: translateX(0);
+                pointer-events: auto;
+            }
+            .nav-links li { 
+                margin: 15px 0; 
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a {
+                display: block;
+                padding: 10px 0;
+            }
+            .hero h1 { 
+                font-size: 2.3rem; 
+            }
+            .hero p { 
+                font-size: 1rem; 
+            }
+            .section-title { 
+                margin-bottom: 40px; 
+            }
+            .section-title h2 { 
+                font-size: 2rem; 
+            }
+            .portfolio-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .portfolio-item { 
+                height: 320px; 
+            }
+            
+            /* 移动端页脚优化 */
+            .footer-bottom-row {
+                flex-wrap: nowrap; 
+                overflow: visible; 
+                gap: 10px; 
+            }
+            
+            .footer-links, .footer-contact {
+                flex: 1 1 auto; 
+            }
+            
+            .footer-heading {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+            
+            .footer-links a, 
+            .footer-contact p {
+                font-size: 0.85rem; 
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            .philosophy-section {
+                padding: 60px 0;
+            }
+            .designer-overlay {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero { 
+                text-align: center; 
+                height: 70vh;
+                background-attachment: scroll; /* 移动设备取消固定背景 */
+            }
+            .hero-content { 
+                padding: 0 15px; 
+                margin-top: 70px;
+            }
+            .hero h1 { 
+                font-size: 2rem; 
+            }
+            .hero-btns { 
+                display: flex; 
+                flex-direction: column; 
+                gap: 15px; 
+            }
+            .btn, .btn-outline { 
+                width: 100%; 
+                margin: 5px 0; 
+            }
+            .section-title h2 { 
+                font-size: 1.8rem; 
+            }
+            .nav-links {
+                width: 40%;
+            }
+            .portfolio-item {
+                height: 280px;
+            }
+            .portfolio-overlay {
+                padding: 15px;
+            }
+            .section {
+                padding: 50px 0;
+            }
+            .philosophy-section,
+            .designer-overlay {
+                padding: 50px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 15px;
+            }
+            .section-title h2 {
+                font-size: 1.6rem;
+                padding-bottom: 8px;
+                line-height: 1.2;
+            }
+            
+            .footer-bottom-row {
+                gap: 5px; 
+            }
+            
+            .footer-contact p {
+                flex-wrap: wrap; 
+            }
+            
+            .footer-contact i {
+                margin-right: 8px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .hero h1 { 
+                font-size: 1.8rem; 
+            }
+            .section-title h2 { 
+                font-size: 1.5rem;
+            }
+            .portfolio-item { 
+                height: 250px; 
+            }
+            .nav-links {
+                width: 50%;
+            }
+            .section {
+                padding: 40px 0;
+            }
+            .philosophy-section,
+            .designer-overlay {
+                padding: 40px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 12px;
+            }
+            .section-title h2 {
+                font-size: 1.4rem;
+                padding-bottom: 6px;
+            }
+            
+            .footer-bottom-row {
+                gap: 5px; 
+            }
+            
+            .footer-heading {
+                font-size: 1rem;
+                padding-bottom: 8px;
+            }
+            
+            .footer-links a, 
+            .footer-contact p {
+                font-size: 0.8rem;
+            }
+            
+            /* 移动端高度优化 */
+            .footer-links li {
+                height: 28px;
+            }
+            
+            .footer-contact p {
+                min-height: 28px;
+            }
+        }
+        
+        /* 作品详情模态框 */
+        .portfolio-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 1000px;
+            margin: 40px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalFade 0.4s ease;
+        }
+        
+        @keyframes modalFade {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: var(--accent);
+            transform: rotate(90deg);
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+        
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .modal-details {
+            padding: 30px;
+        }
+        
+        .modal-details h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .modal-category {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .modal-details p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .modal-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+        
+        .feature-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .feature-text p {
+            font-size: 0.95rem;
+            margin: 0;
+            color: #777;
+        }
+        
+        @media (max-width: 992px) {
+            .modal-image {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .modal-image {
+                height: 300px;
+            }
+            .modal-details {
+                padding: 20px;
+            }
+            .modal-details h3 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .modal-image {
+                height: 250px;
+            }
+            .modal-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Severin<span>Design</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="#portfolio">作品集</a></li>
+                    <li><a href="#philosophy">设计理念</a></li>
+                    <li><a href="#designer">设计师</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>打造理想中的用餐空间</h1>
+            <p>专业餐厅设计方案，融合美学与功能性，为您创造独特而舒适的用餐体验</p>
+            <div class="hero-btns">
+                <a href="#portfolio" class="btn">浏览作品</a>
+                <a href="#contact" class="btn btn-outline">预约咨询</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品集区域 -->
+    <section class="section" id="portfolio">
+        <div class="container">
+            <div class="section-title"><h2>餐厅设计作品集</h2></div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-id="1">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/29/e8743968b5de8722.png" alt="现代简约餐厅">
+                    <div class="portfolio-overlay">
+                        <span class="category">现代简约</span>
+                        <h3>都市轻奢餐厅</h3>
+                        <p>简洁线条与高级材质的完美融合</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-id="2">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/29/d0804671e816a59c.png" alt="工业风餐厅">
+                    <div class="portfolio-overlay">
+                        <span class="category">工业风格</span>
+                        <h3>工业风餐厅设计</h3>
+                        <p>裸露材质与暖色调照明的独特组合</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-id="3">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/29/f6cfef9b8ec4aa21.png" alt="中式餐厅">
+                    <div class="portfolio-overlay">
+                        <span class="category">中式风格</span>
+                        <h3>传统中式餐厅</h3>
+                        <p>东方元素与现代设计的完美平衡</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-id="4">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/29/942593e2f782e5a2.png" alt="西式餐厅">
+                    <div class="portfolio-overlay">
+                        <span class="category">西式风格</span>
+                        <h3>法式餐厅设计</h3>
+                        <p>优雅线条与精致细节的完美呈现</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-id="5">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/29/a651d501ac63f718.png" alt="开放式餐厅">
+                    <div class="portfolio-overlay">
+                        <span class="category">开放式设计</span>
+                        <h3>开放式餐厅空间</h3>
+                        <p>自然光线与流畅动线的完美结合</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-id="6">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/29/d768ed67d84e0738.png" alt="主题餐厅">
+                    <div class="portfolio-overlay">
+                        <span class="category">主题餐厅</span>
+                        <h3>奶油原木风格餐厅</h3>
+                        <p>米白配色与自然材质的完美融合</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设计理念区域 -->
+    <section class="philosophy-section" id="philosophy">
+        <div class="container">
+            <div class="section-title"><h2>餐厅设计理念</h2></div>
+            <div class="philosophy-container">
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>功能性设计</h3>
+                    <p>餐厅设计首要考虑功能性。我们精心规划空间布局，确保工作流程高效顺畅，同时为顾客提供舒适的用餐环境。从厨房到用餐区的动线设计，每个细节都经过深思熟虑。</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>氛围营造</h3>
+                    <p>灯光、色彩和材质的完美结合创造独特氛围。我们根据不同餐厅类型和品牌定位，打造专属的空间氛围，让顾客在用餐过程中获得愉悦的感官体验。</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>美学表达</h3>
+                    <p>餐厅不仅是用餐场所，更是艺术表达的舞台。我们通过精心挑选的家具、艺术品和装饰元素，将品牌故事融入空间设计，创造令人难忘的视觉体验。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设计师区域 -->
+    <section class="designer-section" id="designer">
+        <div class="designer-overlay">
+            <div class="container">
+                <div class="designer-content">
+                    <h2>关于设计师</h2>
+                    <p>我是刘七 (Severin Liu)，拥有10年专业餐厅设计经验。我相信餐厅不仅是提供食物的场所，更是创造美好回忆的空间。我的设计注重顾客体验与品牌表达的完美结合。</p>
+                    <p>我的设计理念是"空间即体验"，通过精心设计的空间布局、照明氛围和材质选择，创造独特的用餐体验。每个项目都是全新的挑战，我期待与您共同打造令人难忘的餐厅空间。</p>
+                    <span class="signature">刘七 Severin Liu</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 - 与living.html完全一致 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Severin<span>Design</span></div>
+                    <p>专业餐厅设计工作室，致力于创造有温度、有故事的餐饮空间，让每个餐厅都成为顾客流连忘返的地方。</p>
+                </div>
+                
+                <div class="footer-bottom-row">
+                    <div class="footer-links">
+                        <h3 class="footer-heading">设计服务</h3>
+                        <ul>
+                            <li><a href="residential.html">住宅室内设计</a></li>
+                            <li><a href="commercial.html">商业空间设计</a></li>
+                            <li><a href="space-planning.html">空间规划咨询</a></li>
+                            <li><a href="remote.html">远程定制方案</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h3 class="footer-heading">联系方式</h3>
+                        <p><i class="fas fa-map-marker-alt"></i>浙江省金华市浦江县</p>
+                        <p><i class="fas fa-phone-alt"></i><a href="tel:15755853147" class="phone-link">15755853147</a></p>
+                        <p><i class="fas fa-envelope"></i>severin@foxmail.com</p>
+                        <p><i class="fab fa-weixin"></i>SeverinDesign</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright"><p>&copy; 2025 SeverinDesign 设计工作室. 保留所有权利。</p></div>
+        </div>
+    </footer>
+
+    <!-- 作品详情模态框 -->
+    <div id="portfolioModal" class="portfolio-modal">
+        <div class="modal-content">
+            <span class="close-modal"><i class="fas fa-times"></i></span>
+            <div class="modal-image">
+                <img id="modalImg" src="" alt="餐厅设计">
+            </div>
+            <div class="modal-details">
+                <h3 id="modalTitle"></h3>
+                <span id="modalCategory" class="modal-category"></span>
+                <p id="modalDescription"></p>
+                
+                <div class="modal-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>色彩方案</h4>
+                            <p id="modalColors"></p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>空间布局</h4>
+                            <p id="modalLayout"></p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-chair"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>主要家具</h4>
+                            <p id="modalFurniture"></p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>照明设计</h4>
+                            <p id="modalLighting"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 导航栏交互
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        // 滚动时导航栏效果
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '12px 0';
+                header.style.boxShadow = 'none';
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                navLinks.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            });
+        });
+        
+        // 作品集交互优化
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const modal = document.getElementById('portfolioModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalCategory = document.getElementById('modalCategory');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalColors = document.getElementById('modalColors');
+        const modalLayout = document.getElementById('modalLayout');
+        const modalFurniture = document.getElementById('modalFurniture');
+        const modalLighting = document.getElementById('modalLighting');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // 作品数据
+        const portfolioData = {
+            1: {
+                title: "都市轻奢餐厅",
+                category: "现代简约",
+                description: "这个现代简约风格的餐厅设计以高级灰为主色调，搭配天然石材和金属元素，营造出精致而舒适的就餐环境。开放式厨房设计让顾客可以欣赏厨师的烹饪过程，增加用餐体验的互动性。",
+                colors: "高级灰、暖木色、金属点缀",
+                layout: "开放式厨房与用餐区",
+                furniture: "定制餐桌、皮质餐椅、大理石吧台",
+                lighting: "嵌入式筒灯、装饰吊灯、氛围灯带"
+            },
+            2: {
+                title: "工业风餐厅设计",
+                category: "工业风格",
+                description: "工业风格餐厅保留了建筑原始结构，裸露的管道和砖墙成为空间特色。暖色调的照明和木质家具为工业风空间增添了温暖感。中央的长条餐桌设计鼓励社交互动，创造独特的用餐体验。",
+                colors: "砖红色、深灰色、原木色",
+                layout: "中央长桌与周边卡座",
+                furniture: "金属框架餐桌、皮质卡座、工业风吊灯",
+                lighting: "轨道射灯、工业吊灯、壁灯组合"
+            },
+            3: {
+                title: "传统中式餐厅",
+                category: "中式风格",
+                description: "这个中式餐厅设计融合了传统元素与现代设计语言。精致的屏风、中式格栅和天然材质营造出东方韵味。包间设计注重私密性，同时保持了空间的通透感。传统与现代的完美平衡让顾客在舒适环境中享受美食。",
+                colors: "深木色、中国红、米白色",
+                layout: "开放式区域与私密包间",
+                furniture: "明式桌椅、中式屏风、博古架",
+                lighting: "纸灯笼、竹编灯、中式壁灯"
+            },
+            4: {
+                title: "法式餐厅设计",
+                category: "西式风格",
+                description: "优雅的法式餐厅设计以柔和的奶油色为主调，搭配精致的线条和装饰元素。拱形门廊和古典吊灯营造出浪漫氛围。精心设计的座位布局确保每位顾客都能享受私密而舒适的用餐体验。",
+                colors: "奶油色、香槟金、浅蓝色",
+                layout: "分区式座位布局",
+                furniture: "高背餐椅、大理石餐桌、天鹅绒沙发",
+                lighting: "水晶吊灯、壁灯、台灯组合"
+            },
+            5: {
+                title: "开放式餐厅空间",
+                category: "开放式设计",
+                description: "开放式餐厅设计最大化利用自然光线，创造通透的空间感。流畅的动线设计确保服务高效顺畅。绿植墙和天然材质的使用为空间增添自然气息，创造轻松愉悦的用餐氛围。",
+                colors: "白色、浅木色、绿色点缀",
+                layout: "流畅动线与功能分区",
+                furniture: "简约餐桌、藤编餐椅、绿植墙",
+                lighting: "自然采光、简约吊灯、氛围照明"
+            },
+            6: {
+                title: "奶油原木风格餐厅",
+                category: "主题餐厅",
+                description: "奶油原木风格餐厅以米白原木配色为主，搭配拱形元素和手工瓷砖。开放式的布局和舒适的户外座位区让人仿佛置身于温暖的海洋。天然材质和手工装饰品为空间增添了独特的艺术气息。",
+                colors: "原木色、纯白色、陶土色",
+                layout: "室内外融合设计",
+                furniture: "藤编座椅、木质餐桌、定制瓷砖",
+                lighting: "串灯、彩色玻璃灯、壁挂灯"
+            }
+        };
+        
+        // 打开作品详情模态框
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const id = item.getAttribute('data-id');
+                const data = portfolioData[id];
+                const imgSrc = item.querySelector('img').src;
+                
+                modalImg.src = imgSrc;
+                modalTitle.textContent = data.title;
+                modalCategory.textContent = data.category;
+                modalDescription.textContent = data.description;
+                modalColors.textContent = data.colors;
+                modalLayout.textContent = data.layout;
+                modalFurniture.textContent = data.furniture;
+                modalLighting.textContent = data.lighting;
+                
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // 关闭模态框
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // 添加滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.portfolio-item, .philosophy-card').forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
