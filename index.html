@@ -932,11 +932,13 @@
             align-items: center;
             justify-content: center;
             border-radius: 10px;
+            overflow: hidden;
         }
         
-        .qr-placeholder {
-            color: #888;
-            font-size: 1rem;
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -1188,7 +1190,7 @@
         </div>
     </div>
 
-    <!-- 微信咨询模态框 - 添加两个按钮 -->
+    <!-- 微信咨询模态框 - 已添加二维码图片 -->
     <div id="wechatModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -1197,7 +1199,8 @@
                 <p>扫描二维码添加微信</p>
             </div>
             <div class="qr-code">
-                <div class="qr-placeholder">微信二维码</div>
+                <!-- 替换下面的URL为您的微信二维码图片地址 -->
+                <img src="https://s3.bmp.ovh/imgs/2025/07/29/c30149142fc9b3e3.png" alt="微信二维码">
             </div>
             <p style="margin: 15px 0; font-weight: 500;">微信号: SeverinDesign</p>
             <div class="modal-actions">
