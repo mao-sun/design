@@ -102,15 +102,15 @@
             z-index: 1001;
         }
         
-        /* 英雄区域 - 半屏高度 */
+        /* 英雄区域 - 优化背景 */
         .hero {
             height: 50vh; 
             display: flex; 
             align-items: center; 
             position: relative;
             background: linear-gradient(rgba(60, 54, 51, 0.3), rgba(60, 54, 51, 0.7)), 
-                       url('https://pic1.imgdb.cn/item/688807da58cb8da5c8ea1c82.jpg?v=1');
-            background-size: contain; 
+                       url('https://pic1.imgdb.cn/item/68888dea58cb8da5c8ec0b7f.png?v=1');
+            background-size: cover; /* 改为cover以覆盖整个区域 */
             background-repeat: no-repeat;
             background-position: center top; 
             background-attachment: fixed;
@@ -376,7 +376,7 @@
         /* 设计师区域 */
         .designer-section {
             background: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: contain;
+            background-size: cover;
             background-position: center top;
             background-attachment: fixed;
             color: white;
@@ -648,6 +648,7 @@
             .hero { 
                 text-align: center; 
                 height: 70vh;
+                background-attachment: scroll; /* 移动设备取消固定背景 */
             }
             .hero-content { 
                 padding: 0 15px; 
