@@ -995,23 +995,7 @@
         }
         
         .info-item {
-            display: flex;
             margin-bottom: 25px;
-            align-items: flex-start;
-        }
-        
-        .info-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            font-size: 1.3rem;
-            color: var(--accent);
-            flex-shrink: 0;
         }
         
         .info-text h4 {
@@ -1072,8 +1056,8 @@
         .phone-modal {
             display: none;
             position: fixed;
-            top: 0;  /* 修复: 逗号改为分号 */
-            left: 0; /* 修复: 逗号改为分号 */
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.85);
@@ -1174,8 +1158,8 @@
         .wechat-modal {
             display: none;
             position: fixed;
-            top: 0;  /* 修复: 逗号改为分号 */
-            left: 0; /* 修复: 逗号改为分号 */
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.85);
@@ -1242,8 +1226,8 @@
         .email-modal {
             display: none;
             position: fixed;
-            top: 0;  /* 修复: 逗号改为分号 */
-            left: 0; /* 修复: 逗号改为分号 */
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.85);
@@ -1407,17 +1391,6 @@
             .wechat-details,
             .email-details {
                 padding: 20px;
-            }
-            
-            .info-item {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            
-            .info-icon {
-                margin-right: 0;
-                margin-bottom: 15px;
             }
             
             .phone-icon,
@@ -1775,9 +1748,6 @@
             </div>
             <div class="appointment-details">
                 <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
                     <div class="info-text">
                         <h4>工作室地点</h4>
                         <p>浙江省金华市浦江县<br>提供远程设计服务</p>
@@ -1785,9 +1755,6 @@
                 </div>
                 
                 <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
                     <div class="info-text">
                         <h4>工作时间</h4>
                         <p>周一至周五: 9:00-17:00（周二除外）<br>周末与节假日: 10:00-16:00（需预约）</p>
