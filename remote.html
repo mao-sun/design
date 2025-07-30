@@ -158,13 +158,13 @@
             color: var(--dark); 
         }
         
-        /* 通用区域样式 */
+        /* 通用区域样式 - 优化间距 */
         .section { 
-            padding: 80px 0; 
+            padding: 70px 0; /* 减少上下内边距 */
         }
         .section-title { 
             text-align: center; 
-            margin-bottom: 50px; 
+            margin-bottom: 40px; /* 减少标题下边距 */
         }
         .section-title h2 {
             font-size: 2.5rem; 
@@ -172,6 +172,7 @@
             display: inline-block; 
             position: relative;
             padding-bottom: 15px;
+            margin-top: 0; /* 确保顶部无额外边距 */
         }
         .section-title h2:after {
             content: ''; 
@@ -202,10 +203,12 @@
         .benefit-card {
             background: white;
             border-radius: 10px;
-            padding: 40px 30px;
+            padding: 35px 25px; /* 减少内边距 */
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
         .benefit-card:hover {
             transform: translateY(-10px);
@@ -276,7 +279,7 @@
         .step-content {
             background: white;
             border-radius: 10px;
-            padding: 30px;
+            padding: 25px; /* 减少内边距 */
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             flex: 1;
         }
@@ -306,8 +309,10 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             transition: var(--transition); 
             text-align: center; 
-            padding: 30px 20px;
+            padding: 25px 15px; /* 减少内边距 */
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
         .service-card:hover { 
             transform: translateY(-8px); 
@@ -360,7 +365,7 @@
             bottom: 0; 
             left: 0; 
             width: 100%; 
-            padding: 30px;
+            padding: 25px; /* 减少内边距 */
             background: rgba(60, 54, 51, 0.85);
             color: white;
             transition: var(--transition);
@@ -372,7 +377,7 @@
         .portfolio-overlay p { 
             font-size: 1rem; 
             opacity: 0.9;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* 减少下边距 */
         }
         .portfolio-link {
             display: inline-block;
@@ -505,13 +510,13 @@
         footer { 
             background-color: var(--dark); 
             color: white; 
-            padding: 60px 0 25px; 
+            padding: 50px 0 20px; /* 减少内边距 */
         }
         .footer-content { 
             display: flex;
             flex-wrap: wrap;
             gap: 40px;
-            margin-bottom: 40px; 
+            margin-bottom: 30px; /* 减少下边距 */
         }
         .footer-about { 
             flex: 1;
@@ -588,6 +593,18 @@
             min-width: 20px; 
             padding-top: 3px; 
         }
+        
+        /* 电话号码样式修复 */
+        .plain-phone { 
+            color: #aaa; 
+            text-decoration: none; 
+            transition: color 0.3s ease; 
+        }
+        .plain-phone:hover { 
+            color: var(--accent); 
+            text-decoration: none; 
+        }
+        
         .copyright { 
             text-align: center; 
             padding-top: 25px; 
@@ -612,6 +629,16 @@
             }
             .portfolio-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            /* 减少section间距 */
+            .section {
+                padding: 60px 0;
+            }
+            
+            /* 减少标题间距 */
+            .section-title {
+                margin-bottom: 35px;
             }
         }
         
@@ -657,10 +684,10 @@
                 font-size: 1rem; 
             }
             .section { 
-                padding: 60px 0; 
+                padding: 50px 0; /* 移动端减少间距 */
             }
             .section-title { 
-                margin-bottom: 30px; 
+                margin-bottom: 25px; /* 移动端减少标题下边距 */
             }
             .section-title h2 { 
                 font-size: 2rem; 
@@ -675,12 +702,68 @@
             .submit-btn {
                 grid-column: span 1;
             }
+            
+            /* 页脚布局优化 - 强制并排显示 */
             .footer-bottom-row {
                 flex-direction: row;
                 gap: 20px;
+                flex-wrap: nowrap; /* 强制不换行 */
             }
-            .footer-links {
-                flex: 0 0 45%;
+            
+            .footer-links, .footer-contact {
+                flex: 1;
+                min-width: auto; /* 移除最小宽度限制 */
+            }
+            
+            /* 修复服务优势卡片布局 - 确保图标和标题在同一行 */
+            .benefit-card {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+                padding: 20px; /* 减少内边距 */
+            }
+            .benefit-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                margin: 0 15px 0 0;
+                flex-shrink: 0;
+            }
+            .benefit-card h3 {
+                margin-top: 0;
+                margin-bottom: 10px;
+                font-size: 1.2rem;
+            }
+            .benefit-card p {
+                margin-top: 10px;
+                text-align: left;
+                font-size: 0.95rem;
+            }
+            
+            /* 修复服务内容卡片布局 - 确保图标和标题在同一行 */
+            .service-card {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+                padding: 20px; /* 减少内边距 */
+            }
+            .service-icon {
+                font-size: 2rem;
+                margin: 0 15px 0 0;
+                min-width: 40px;
+                flex-shrink: 0;
+            }
+            .service-card h3 {
+                margin-top: 0;
+                margin-bottom: 10px;
+                font-size: 1.2rem;
+            }
+            .service-card p {
+                margin-top: 10px;
+                text-align: left;
+                font-size: 0.95rem;
             }
         }
         
@@ -717,13 +800,102 @@
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
+            
+            /* 小屏幕页脚布局调整 */
+            .footer-bottom-row {
+                flex-direction: row;
+                gap: 15px;
+                flex-wrap: wrap; /* 在小屏幕允许换行 */
+            }
+            
+            .footer-links, .footer-contact {
+                flex: 0 0 calc(50% - 15px); /* 确保两列布局 */
+            }
+            
+            /* 优化卡片布局，确保图标和标题水平排列 */
+            .benefit-card {
+                flex-direction: row;
+                padding: 18px; /* 进一步减少内边距 */
+            }
+            .benefit-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+                margin-right: 12px;
+            }
+            
+            .service-card {
+                flex-direction: row;
+                padding: 18px; /* 进一步减少内边距 */
+            }
+            .service-icon {
+                font-size: 1.8rem;
+                margin-right: 12px;
+            }
+            
+            /* 进一步减少section间距 */
+            .section {
+                padding: 45px 0;
+            }
+            
+            /* 进一步减少标题间距 */
+            .section-title {
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-bottom-row {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-links, .footer-contact {
+                flex: 0 0 100%;
+            }
+            
+            /* 进一步优化卡片布局 */
+            .benefit-card {
+                padding: 16px; /* 超小屏幕内边距 */
+            }
+            .benefit-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                margin-right: 12px;
+            }
+            .benefit-card h3 {
+                font-size: 1.1rem;
+            }
+            .benefit-card p {
+                font-size: 0.9rem;
+            }
+            
+            .service-card {
+                padding: 16px; /* 超小屏幕内边距 */
+            }
+            .service-icon {
+                font-size: 1.6rem;
+                margin-right: 12px;
+            }
+            .service-card h3 {
+                font-size: 1.1rem;
+            }
+            .service-card p {
+                font-size: 0.9rem;
+            }
+            
+            /* 超小屏幕进一步减少section间距 */
+            .section {
+                padding: 40px 0;
+            }
         }
         
         /* 表单提交状态 */
         .form-success {
             display: none;
             text-align: center;
-            padding: 30px;
+            padding: 25px; /* 减少内边距 */
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             margin-top: 20px;
@@ -731,11 +903,11 @@
         .form-success i {
             font-size: 3rem;
             color: #4CAF50;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* 减少下边距 */
         }
         .form-success h3 {
             font-size: 1.8rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px; /* 减少下边距 */
         }
     </style>
 </head>
@@ -780,29 +952,37 @@
                     <div class="benefit-icon">
                         <i class="fas fa-globe-americas"></i>
                     </div>
-                    <h3>无地域限制</h3>
-                    <p>无论您身在何处，只需提供空间照片和尺寸，即可获得专业设计分析</p>
+                    <div class="benefit-text">
+                        <h3>无地域限制</h3>
+                        <p>无论您身在何处，只需提供空间照片和尺寸，即可获得专业设计分析</p>
+                    </div>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">
                         <i class="fas fa-stopwatch"></i>
                     </div>
-                    <h3>高效便捷</h3>
-                    <p>省去现场勘测的时间成本，24-48小时内即可获取初步分析报告</p>
+                    <div class="benefit-text">
+                        <h3>高效便捷</h3>
+                        <p>省去现场勘测的时间成本，24-48小时内即可获取初步分析报告</p>
+                    </div>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">
                         <i class="fas fa-wallet"></i>
                     </div>
-                    <h3>经济实惠</h3>
-                    <p>相比传统设计服务节省30%费用，性价比更高</p>
+                    <div class="benefit-text">
+                        <h3>经济实惠</h3>
+                        <p>相比传统设计服务节省30%费用，性价比更高</p>
+                    </div>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">
                         <i class="fas fa-laptop"></i>
                     </div>
-                    <h3>技术先进</h3>
-                    <p>使用专业3D建模软件，提供高清效果图和VR虚拟体验</p>
+                    <div class="benefit-text">
+                        <h3>技术先进</h3>
+                        <p>使用专业3D建模软件，提供高清效果图和VR虚拟体验</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -858,33 +1038,45 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-ruler-combined"></i></div>
-                    <h3>空间布局优化</h3>
-                    <p>根据您的需求重新规划空间功能分区，优化动线设计，提升空间利用率</p>
+                    <div class="service-text">
+                        <h3>空间布局优化</h3>
+                        <p>根据您的需求重新规划空间功能分区，优化动线设计，提升空间利用率</p>
+                    </div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-palette"></i></div>
-                    <h3>色彩搭配方案</h3>
-                    <p>提供专业的色彩搭配方案，包括墙面、家具、软装等整体色彩规划</p>
+                    <div class="service-text">
+                        <h3>色彩搭配方案</h3>
+                        <p>提供专业的色彩搭配方案，包括墙面、家具、软装等整体色彩规划</p>
+                    </div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3>照明设计建议</h3>
-                    <p>根据不同空间功能设计照明方案，营造舒适的光环境</p>
+                    <div class="service-text">
+                        <h3>照明设计建议</h3>
+                        <p>根据不同空间功能设计照明方案，营造舒适的光环境</p>
+                    </div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-couch"></i></div>
-                    <h3>家具布局方案</h3>
-                    <p>提供家具尺寸选择、摆放位置建议，优化空间视觉效果</p>
+                    <div class="service-text">
+                        <h3>家具布局方案</h3>
+                        <p>提供家具尺寸选择、摆放位置建议，优化空间视觉效果</p>
+                    </div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-box-open"></i></div>
-                    <h3>收纳解决方案</h3>
-                    <p>针对不同空间特点，提供高效收纳方案，解决杂乱问题</p>
+                    <div class="service-text">
+                        <h3>收纳解决方案</h3>
+                        <p>针对不同空间特点，提供高效收纳方案，解决杂乱问题</p>
+                    </div>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-                    <h3>材料采购清单</h3>
-                    <p>提供详细的材料、家具和装饰品采购清单及购买渠道建议</p>
+                    <div class="service-text">
+                        <h3>材料采购清单</h3>
+                        <p>提供详细的材料、家具和装饰品采购清单及购买渠道建议</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -928,7 +1120,7 @@
             <div class="booking-container">
                 <form id="remoteAnalysisForm" class="booking-form" 
                       action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSc7QurBYawWp08Y1hg5-CrzqjhIeY_babYud8FGq8d_pd4_8w/formResponse" 
-                      method="POST" target="hiddenFrame">
+                      method="POST">
                       
                     <div class="form-group">
                         <label for="entry.1154381800">您的房屋面积（㎡）</label>
@@ -1004,18 +1196,15 @@
                     <div class="footer-contact">
                         <h3 class="footer-heading">联系方式</h3>
                         <p><i class="fas fa-map-marker-alt"></i>浙江省金华市浦江县</p>
-                        <p><i class="fas fa-phone-alt"></i>15755853147</p>
-                        <p><i class="fas fa-envelope"></i>severin@foxmail.com</p>
-                        <p><i class="fab fa-weixin"></i>SeverinDesign</p>
+                        <p><i class="fas fa-phone-alt"></i><a href="tel:15755853147" class="plain-phone">15755853147</a></p>
+                        <p><i class="fas fa-envelope"></i><a href="mailto:severin@foxmail.com" class="plain-phone">severin@foxmail.com</a></p>
+                        <p><i class="fab fa-weixin"></i><span class="plain-phone">SeverinDesign</span></p>
                     </div>
                 </div>
             </div>
             <div class="copyright"><p>&copy; 2023 刘七设计工作室. 保留所有权利。</p></div>
         </div>
     </footer>
-
-    <!-- 隐藏iframe用于表单提交 -->
-    <iframe name="hiddenFrame" style="display:none;"></iframe>
 
     <script>
         // 导航栏交互
@@ -1039,29 +1228,17 @@
             }
         });
         
-        // 表单提交处理
+        // 表单提交处理 - 修复真实提交问题
         const remoteAnalysisForm = document.getElementById('remoteAnalysisForm');
         const formSuccess = document.getElementById('formSuccess');
         
         remoteAnalysisForm.addEventListener('submit', function(e) {
-            // 在实际环境中，这里不需要阻止默认行为，因为我们要提交到Google Forms
-            // 但在演示中，我们模拟成功提交
-            e.preventDefault();
-            
             // 显示成功消息
             formSuccess.style.display = 'block';
             remoteAnalysisForm.style.display = 'none';
             
-            // 重置表单（在实际应用中不需要，因为表单已提交）
-            // this.reset();
-            
-            // 在实际应用中，直接提交到Google Forms
-            // 这里为了演示使用setTimeout模拟
-            setTimeout(() => {
-                // 在实际应用中，删除下面这行，取消注释上面的e.preventDefault();
-                // 并让表单正常提交到Google Forms
-                // this.submit();
-            }, 1000);
+            // 允许表单正常提交到Google Forms
+            // 不需要阻止默认行为
         });
         
         // 平滑滚动到预约区域
