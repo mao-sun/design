@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商业空间设计 | Severin Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e8d8c4; 
+            --secondary: #c7b7a3; 
+            --accent: #d4b483; 
+            --light-accent: rgba(240, 210, 160, 0.85);
+            --dark: #3c3633; 
+            --light: #f8f5f0;
+        }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Montserrat', 'Segoe UI', 'PingFang SC', sans-serif; 
+        }
+        body { 
+            background: var(--light); 
+            color: var(--dark); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+        
+        /* 导航栏 */
+        header {
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 1000;
+            background: rgba(248, 245, 240, 0.95); 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 0; 
+            transition: all 0.3s ease;
+        }
+        .navbar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: relative;
+        }
+        .logo { 
+            font-size: 28px; 
+            font-weight: 700; 
+            color: var(--dark); 
+            text-decoration: none; 
+        }
+        .logo span { 
+            color: var(--accent); 
+        }
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+        }
+        .nav-links li { 
+            margin-left: 30px; 
+        }
+        .nav-links a {
+            text-decoration: none; 
+            color: var(--dark); 
+            font-weight: 500; 
+            font-size: 16px;
+            position: relative; 
+            transition: color 0.3s ease;
+        }
+        .nav-links a:after {
+            content: ''; 
+            position: absolute; 
+            bottom: -5px; 
+            left: 0; 
+            width: 0; 
+            height: 2px;
+            background: var(--accent); 
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover:after { 
+            width: 100%; 
+        }
+        .nav-links a:hover { 
+            color: var(--accent); 
+        }
+        .hamburger { 
+            display: none; 
+            cursor: pointer; 
+            font-size: 1.5rem; 
+            color: var(--dark); 
+            z-index: 1001;
+        }
+        
+        /* 商业空间英雄区域 */
+        .commercial-hero {
+            height: 80vh; 
+            display: flex; 
+            align-items: center; 
+            position: relative;
+            background: linear-gradient(rgba(60, 54, 51, 0.3), rgba(60, 54, 51, 0.7)), 
+                       url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover; 
+            background-position: center; 
+            color: white;
+            margin-top: 70px;
+        }
+        .hero-content { 
+            max-width: 650px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            text-align: center; 
+        }
+        .commercial-hero h1 { 
+            font-size: 3.2rem; 
+            font-weight: 700; 
+            margin-bottom: 20px; 
+            line-height: 1.2; 
+        }
+        .commercial-hero p { 
+            font-size: 1.2rem; 
+            margin-bottom: 30px; 
+            font-weight: 300; 
+            max-width: 600px; 
+            margin: 0 auto 30px;
+        }
+        .btn {
+            display: inline-block; 
+            padding: 12px 30px; 
+            background: var(--accent); 
+            color: white;
+            text-decoration: none; 
+            border-radius: 30px; 
+            font-weight: 500; 
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent); 
+            margin: 5px;
+        }
+        .btn:hover { 
+            background: transparent; 
+            color: var(--accent); 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+        }
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid white; 
+        }
+        .btn-outline:hover { 
+            background: white; 
+            color: var(--dark); 
+        }
+        
+        /* 通用区域样式 */
+        .section { 
+            padding: 70px 0; 
+        }
+        .section-title { 
+            text-align: center; 
+            margin-bottom: 40px; 
+        }
+        .section-title h2 {
+            font-size: 2.3rem; 
+            color: var(--dark); 
+            display: inline-block; 
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title h2:after {
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%);
+            width: 80px; 
+            height: 3px; 
+            background: var(--accent);
+        }
+        
+        /* 商业空间服务介绍 */
+        .commercial-intro {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        .commercial-text {
+            flex: 1;
+        }
+        .commercial-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        .commercial-text p {
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* 服务类型网格 - 优化移动端图标和标题 */
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+        }
+        .service-card {
+            background: white; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease; 
+            padding: 30px 20px;
+            position: relative;
+            text-decoration: none; 
+            color: inherit; 
+            display: block;
+        }
+        .service-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1); 
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .service-icon { 
+            font-size: 2.5rem; 
+            color: var(--accent); 
+            margin-right: 15px;
+            min-width: 40px;
+        }
+        .service-card h3 { 
+            font-size: 1.4rem; 
+            margin-bottom: 0;
+            color: var(--dark); 
+        }
+        .service-card p {
+            color: #555;
+            padding-left: 55px;
+        }
+        
+        /* 设计流程 - 优化移动端显示 */
+        .process-container {
+            background: rgba(232, 216, 196, 0.2);
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .process-step {
+            flex: 0 0 calc(33.333% - 30px);
+            min-width: 200px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: left;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+        }
+        .process-step:hover {
+            transform: translateY(-10px);
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .step-content {
+            flex: 1;
+        }
+        .process-step h4 {
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        .process-step p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* 案例展示 - 优化为2x2布局 */
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+        }
+        .portfolio-item {
+            position: relative; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            height: 320px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        .portfolio-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        .portfolio-overlay {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(to top, rgba(60, 54, 51, 0.8), transparent 50%);
+            display: flex; 
+            flex-direction: column;
+            justify-content: flex-end; 
+            padding: 25px; 
+            text-align: left; 
+            color: white;
+            pointer-events: none;
+        }
+        .portfolio-overlay h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 8px; 
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+        .portfolio-overlay p { 
+            margin-bottom: 15px; 
+            font-size: 0.95rem; 
+            transform: translateY(10px);
+            transition: all 0.4s ease 0.1s;
+            opacity: 0.9;
+        }
+        .portfolio-overlay .category {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            transform: translateY(10px);
+            transition: all 0.4s ease 0.2s;
+        }
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p,
+        .portfolio-item:hover .portfolio-overlay .category {
+            transform: translateY(0);
+        }
+        
+        /* 咨询按钮样式 - 移动端优化 */
+        .method-btn {
+            padding: 12px 20px; 
+            background: var(--accent); 
+            color: white; 
+            border: none; 
+            border-radius: 30px;
+            font-size: 0.95rem; 
+            font-weight: 500; 
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            min-width: 100px;
+            text-align: center;
+        }
+        .method-btn:hover { 
+            background: #c29d6b; 
+            transform: translateY(-3px) scale(1.05); 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
+        }
+        
+        /* 页脚优化 - 重点修改部分 */
+        footer { 
+            background-color: var(--dark); 
+            color: white; 
+            padding: 60px 0 25px; 
+        }
+        .footer-content { 
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 40px; 
+        }
+        .footer-about { 
+            width: 100%;
+        }
+        .footer-logo { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            margin-bottom: 15px; 
+            color: white; 
+        }
+        .footer-logo span { 
+            color: var(--accent); 
+        }
+        .footer-about p { 
+            margin-bottom: 20px; 
+            color: #aaa; 
+            font-size: 0.95rem; 
+        }
+        
+        /* 强制并排显示 */
+        .footer-bottom-row {
+            display: flex;
+            width: 100%;
+            gap: 20px;
+            flex-wrap: nowrap;
+        }
+        
+        .footer-links, .footer-contact {
+            flex: 1;
+        }
+        
+        .footer-heading { 
+            font-size: 1.3rem; 
+            margin-bottom: 20px; 
+            position: relative; 
+            padding-bottom: 10px; 
+        }
+        .footer-heading:after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 2px; 
+            background: var(--accent); 
+        }
+        
+        /* 设计服务部分 */
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li { 
+            margin-bottom: 12px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a { 
+            color: #aaa; 
+            text-decoration: none; 
+            transition: color 0.3s ease; 
+            font-size: 0.95rem; 
+            display: block;
+            padding: 6px 0;
+        }
+        
+        .footer-links a:hover { 
+            color: var(--accent); 
+        }
+        
+        /* 联系方式部分 */
+        .footer-contact p { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 12px; 
+            color: #aaa; 
+            font-size: 0.95rem; 
+            min-height: 32px;
+        }
+        
+        .footer-contact i { 
+            margin-right: 10px; 
+            color: var(--accent); 
+            min-width: 20px; 
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .wechat-account { 
+            display: block; 
+            margin-top: 5px; 
+            font-weight: 500; 
+            color: #e8d8c4; 
+        }
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 25px; 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            color: #aaa; 
+            font-size: 0.9rem; 
+        }
+        
+        .phone-link {
+            color: #aaa !important; 
+            text-decoration: none !important; 
+            transition: color 0.3s ease; 
+            cursor: pointer; 
+        }
+
+        .phone-link:hover {
+            color: var(--accent) !important; 
+        }
+
+        a[href^="tel"] {
+            color: #aaa !important;
+            text-decoration: none !important;
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .modal-header {
+            margin-bottom: 20px;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .contact-info-modal {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(232, 216, 196, 0.3);
+            border-radius: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .modal-actions .btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #888;
+            cursor: pointer;
+        }
+        
+        /* 复制成功提示 */
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            z-index: 3000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .copy-notification.show {
+            opacity: 1;
+        }
+        
+        /* 微信二维码样式 */
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        /* 响应式设计 */
+        @media (min-width: 992px) {
+            .services-grid { 
+                grid-template-columns: repeat(4, 1fr); 
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .commercial-hero h1 { 
+                font-size: 2.8rem; 
+            }
+            .commercial-intro { 
+                flex-direction: column; 
+            }
+            .section { 
+                padding: 60px 0; 
+            }
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            .process-step {
+                flex: 0 0 calc(50% - 20px);
+            }
+        }
+        
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+            .hamburger { 
+                display: block; 
+            }
+            .nav-links {
+                position: fixed; 
+                top: 70px; 
+                left: 0; 
+                width: 40%; 
+                height: calc(100vh - 70px);
+                background: var(--light); 
+                flex-direction: column; 
+                align-items: center; 
+                padding-top: 40px;
+                transition: transform 0.4s ease;
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
+                transform: translateX(-100%);
+                pointer-events: none;
+            }
+            .nav-links.active { 
+                transform: translateX(0);
+                pointer-events: auto;
+            }
+            .nav-links li { 
+                margin: 12px 0; 
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a {
+                display: block;
+                padding: 8px 0;
+            }
+            .commercial-hero h1 { 
+                font-size: 2.3rem; 
+            }
+            .commercial-hero p { 
+                font-size: 1rem; 
+            }
+            .section { 
+                padding: 50px 0; 
+            }
+            .section-title { 
+                margin-bottom: 30px; 
+            }
+            .section-title h2 { 
+                font-size: 2rem; 
+                padding-bottom: 10px;
+            }
+            .portfolio-item { 
+                height: 280px; 
+                margin-bottom: 15px;
+            }
+            
+            /* 服务卡片移动端布局 */
+            .service-header {
+                margin-bottom: 10px;
+            }
+            
+            .service-card p {
+                padding-left: 0;
+            }
+            
+            /* 页脚布局优化 - 重点修改 */
+            .footer-bottom-row {
+                flex-wrap: nowrap;
+                overflow-x: hidden;
+                scrollbar-width: none;
+                padding-bottom: 0;
+                gap: 10px;
+            }
+            
+            .footer-bottom-row::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .footer-links {
+                flex: 0 0 35%;
+                min-width: 0;
+            }
+            
+            .footer-contact {
+                flex: 0 0 65%;
+                min-width: 0;
+            }
+            
+            .footer-links a, 
+            .footer-contact p {
+                font-size: 0.85rem;
+            }
+            
+            .process-step {
+                flex: 0 0 100%;
+            }
+            
+            /* 咨询按钮 - 移动端并排 */
+            .method-buttons {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .method-btn {
+                flex: 1;
+                min-width: 120px;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            /* 案例展示网格 - 移动端单列 */
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .commercial-hero { 
+                text-align: center; 
+            }
+            .hero-content { 
+                padding: 0 15px; 
+            }
+            .commercial-hero h1 { 
+                font-size: 2rem; 
+            }
+            .hero-btns { 
+                display: flex; 
+                flex-direction: column; 
+                gap: 15px; 
+            }
+            .btn, .btn-outline { 
+                width: 100%; 
+                margin: 5px 0; 
+            }
+            .section-title h2 { 
+                font-size: 1.8rem; 
+            }
+            .section {
+                padding: 40px 0;
+            }
+            
+            /* 标题间距优化 */
+            .section-title {
+                margin-bottom: 20px;
+            }
+            
+            .section-title h2 {
+                padding-bottom: 8px;
+            }
+            
+            /* 导航栏宽度 */
+            .nav-links {
+                width: 50%;
+            }
+            
+            /* 页脚布局优化 */
+            .footer-bottom-row {
+                gap: 15px;
+            }
+            
+            .footer-heading {
+                font-size: 1.1rem;
+            }
+            
+            .footer-links a, 
+            .footer-contact p {
+                font-size: 0.85rem;
+            }
+            
+            .process-step {
+                padding: 15px;
+            }
+            
+            /* 咨询按钮优化 */
+            .method-btn {
+                min-width: 110px;
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .commercial-hero h1 { 
+                font-size: 1.8rem; 
+            }
+            .section-title h2 { 
+                font-size: 1.7rem; 
+            }
+            .portfolio-item { 
+                height: 220px; 
+            }
+            .nav-links {
+                width: 60%;
+            }
+            .section-title {
+                margin-bottom: 15px;
+            }
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            /* 页脚优化 */
+            .footer-heading {
+                font-size: 1.1rem;
+            }
+            
+            .footer-links a, 
+            .footer-contact p {
+                font-size: 0.85rem;
+            }
+            
+            /* 咨询按钮在小屏幕上垂直排列 */
+            .method-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .method-btn {
+                width: 100%;
+                max-width: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏遮罩 -->
+    <div class="nav-overlay"></div>
+    
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Severin<span>Design</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="index.html#about">关于</a></li>
+                    <li><a href="index.html#services">服务</a></li>
+                    <li><a href="index.html#portfolio">作品集</a></li>
+                    <li><a href="index.html#contact">预约咨询</a></li>
+                </ul>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 商业空间英雄区域 -->
+    <section class="commercial-hero">
+        <div class="hero-content">
+            <h1>商业空间设计</h1>
+            <p>为您的企业创造有吸引力、功能性强且能提升品牌价值的商业环境</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn">预约咨询</a>
+                <a href="#portfolio" class="btn btn-outline">查看案例</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商业空间介绍 -->
+    <section class="section">
+        <div class="container">
+            <div class="commercial-intro">
+                <div class="commercial-text">
+                    <h3>专业商业空间设计解决方案</h3>
+                    <p>在竞争激烈的商业环境中，您的空间设计不仅仅是装饰，它是品牌形象、用户体验和商业成功的关键因素。我们专注于创造既美观又实用的商业空间，帮助您实现商业目标。</p>
+                    <p>凭借10年的商业空间设计经验，我们理解不同行业的独特需求。无论是零售空间、办公环境还是餐饮场所，我们的设计都能提升客户体验、优化工作流程并强化品牌形象。</p>
+                    <p>我们采用整体设计方法，考虑空间布局、照明、材质选择、品牌元素和用户体验等各个方面，确保每个项目都能完美实现您的商业愿景。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务类型 -->
+    <section class="section" style="background-color: #f5f1e9;">
+        <div class="container">
+            <div class="section-title"><h2>商业空间设计服务</h2></div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-shopping-bag"></i></div>
+                        <h3>零售空间</h3>
+                    </div>
+                    <p>精品店、商场专柜、品牌旗舰店等零售空间设计与规划，提升购物体验与品牌形象。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-utensils"></i></div>
+                        <h3>餐饮空间</h3>
+                    </div>
+                    <p>餐厅、咖啡馆、酒吧等餐饮场所设计，创造独特的用餐环境与氛围。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-building"></i></div>
+                        <h3>办公空间</h3>
+                    </div>
+                    <p>企业办公室、联合办公空间、会议室等设计，提升工作效率与员工幸福感。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><i class="fas fa-spa"></i></div>
+                        <h3>服务场所</h3>
+                    </div>
+                    <p>酒店、美容院、诊所等专业服务场所设计，创造舒适专业的服务环境。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设计流程 -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title"><h2>我们的设计流程</h2></div>
+            <div class="process-container">
+                <p>我们的商业空间设计流程经过多年优化，确保每个项目都能高效、高质量地完成，同时充分满足客户的商业目标：</p>
+                
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>需求分析</h4>
+                            <p>深入了解您的业务目标、品牌定位、目标客户和功能需求。</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>概念设计</h4>
+                            <p>根据分析结果创建初步设计方案和空间概念，包括风格定位和功能布局。</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>方案深化</h4>
+                            <p>细化设计方案，包括材料选择、色彩方案、照明设计和家具布局。</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>施工管理</h4>
+                            <p>监督施工过程，确保设计意图准确实现，解决施工中的问题。</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>项目交付</h4>
+                            <p>最终验收，提供维护建议，确保客户满意并准备开业。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 案例展示 - 优化为2x2布局 -->
+    <section class="section" id="portfolio">
+        <div class="container">
+            <div class="section-title"><h2>商业空间案例</h2></div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/28/7b03f82d473cf4be.png" alt="餐厅设计">
+                    <div class="portfolio-overlay">
+                        <span class="category">餐饮空间</span>
+                        <h3>高级餐厅设计</h3>
+                        <p>工业风与现代元素的结合，打造独特的用餐体验</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://s3.bmp.ovh/imgs/2025/07/28/0cd81068effa3dcc.png" alt="办公空间">
+                    <div class="portfolio-overlay">
+                        <span class="category">办公空间</span>
+                        <h3>创意办公空间</h3>
+                        <p>开放式布局与灵活工作区，激发团队创造力</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="零售空间">
+                    <div class="portfolio-overlay">
+                        <span class="category">零售空间</span>
+                        <h3>时尚精品店</h3>
+                        <p>现代简约风格，突出产品展示与品牌形象</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="酒店大堂">
+                    <div class="portfolio-overlay">
+                        <span class="category">服务场所</span>
+                        <h3>精品酒店大堂</h3>
+                        <p>奢华与舒适并存，创造难忘的第一印象</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 预约咨询 - 添加功能按钮 -->
+    <section class="section" id="contact" style="background-color: var(--light);">
+        <div class="container">
+            <div class="section-title"><h2>预约商业空间咨询</h2></div>
+            <div class="contact-container" style="text-align: center;">
+                <p>我们为商业客户提供专业的设计咨询服务，请选择您的联系方式：</p>
+                
+                <div class="method-buttons" style="display: flex; gap: 20px; margin-top: 40px; flex-wrap: wrap; justify-content: center;">
+                    <button id="wechatConsultBtn" class="method-btn">
+                        <i class="fab fa-weixin"></i> 微信咨询
+                    </button>
+                    <button id="phoneBookingBtn" class="method-btn">
+                        <i class="fas fa-phone"></i> 电话预约
+                    </button>
+                    <button id="emailConsultBtn" class="method-btn">
+                        <i class="fas fa-envelope"></i> 邮件咨询
+                    </button>
+                </div>
+                
+                <div style="margin-top: 50px; background: rgba(232, 216, 196, 0.2); padding: 30px; border-radius: 10px; max-width: 600px; margin: 50px auto 0;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px;">商业客户专享服务</h3>
+                    <ul style="text-align: left; list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                            <i class="fas fa-check-circle" style="color: var(--accent); position: absolute; left: 0; top: 5px;"></i>
+                            免费初步咨询与空间评估
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                            <i class="fas fa-check-circle" style="color: var(--accent); position: absolute; left: 0; top: 5px;"></i>
+                            专业品牌与空间匹配分析报告
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 25px; position: relative;">
+                            <i class="fas fa-check-circle" style="color: var(--accent); position: absolute; left: 0; top: 5px;"></i>
+                            个性化设计方案与3D可视化展示
+                        </li>
+                        <li style="padding-left: 25px; position: relative;">
+                            <i class="fas fa-check-circle" style="color: var(--accent); position: absolute; left: 0; top: 5px;"></i>
+                            全程项目管理与施工监督
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 - 重点优化部分 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Severin<span>Design</span></div>
+                    <p>专业商业空间设计工作室，致力于创造有情感、有温度的空间，让每个企业都拥有理想的商业环境。</p>
+                </div>
+                
+                <div class="footer-bottom-row">
+                    <div class="footer-links">
+                        <h3 class="footer-heading">设计服务</h3>
+                        <ul>
+                            <li><a href="residential.html">住宅设计</a></li>
+                            <li><a href="commercial.html">商业空间</a></li>
+                            <li><a href="space-planning.html">空间规划</a></li>
+                            <li><a href="remote.html">远程分析</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h3 class="footer-heading">联系方式</h3>
+                        <p><i class="fas fa-map-marker-alt"></i>浙江省金华市浦江县</p>
+                        <p><i class="fas fa-phone-alt"></i><a href="tel:15755853147" class="phone-link">15755853147</a></p>
+                        <p><i class="fas fa-envelope"></i>severin@foxmail.com</p>
+                        <p><i class="fab fa-weixin"></i>SeverinDesign</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright"><p>&copy; 2023 SeverinDesign 商业空间设计工作室. 保留所有权利。</p></div>
+        </div>
+    </footer>
+
+    <!-- 电话预约模态框 -->
+    <div id="phoneModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h3>电话预约</h3>
+                <p>请拨打以下电话号码与我们联系</p>
+            </div>
+            <a href="tel:15755853147" class="contact-info-modal">15755853147</a>
+            <div class="modal-actions">
+                <a href="tel:15755853147" class="btn">立即拨打</a>
+                <button id="copyPhoneBtn" class="btn">复制号码</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 邮件咨询模态框 -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h3>邮件咨询</h3>
+                <p>请将您的需求发送至以下邮箱</p>
+            </div>
+            <a href="mailto:severin@foxmail.com" class="contact-info-modal">severin@foxmail.com</a>
+            <div class="modal-actions">
+                <a href="mailto:severin@foxmail.com" class="btn">发送邮件</a>
+                <button id="copyEmailBtn" class="btn">复制邮箱</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 微信咨询模态框 -->
+    <div id="wechatModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h3>微信咨询</h3>
+                <p>扫描二维码添加微信</p>
+            </div>
+            <div class="qr-code">
+                <img src="https://s3.bmp.ovh/imgs/2025/07/29/c30149142fc9b3e3.png" alt="微信二维码">
+            </div>
+            <p style="margin: 15px 0; font-weight: 500;">微信号: SeverinDesign</p>
+            <div class="modal-actions">
+                <button id="addWechatBtn" class="btn">添加微信</button>
+                <button id="copyWechatBtn" class="btn">复制微信号</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 复制成功提示 -->
+    <div id="copyNotification" class="copy-notification">已复制到剪贴板</div>
+
+    <script>
+        // 导航栏交互
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navOverlay = document.querySelector('.nav-overlay');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        // 点击遮罩关闭导航栏
+        navOverlay.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // 滚动时导航栏效果
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '12px 0';
+                header.style.boxShadow = 'none';
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            });
+        });
+        
+        // 预约咨询模态框
+        const phoneModal = document.getElementById('phoneModal');
+        const emailModal = document.getElementById('emailModal');
+        const wechatModal = document.getElementById('wechatModal');
+        const phoneBookingBtn = document.getElementById('phoneBookingBtn');
+        const emailConsultBtn = document.getElementById('emailConsultBtn');
+        const wechatConsultBtn = document.getElementById('wechatConsultBtn');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        const copyPhoneBtn = document.getElementById('copyPhoneBtn');
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        const addWechatBtn = document.getElementById('addWechatBtn');
+        const copyWechatBtn = document.getElementById('copyWechatBtn');
+        const copyNotification = document.getElementById('copyNotification');
+        
+        // 打开模态框
+        phoneBookingBtn.addEventListener('click', () => phoneModal.style.display = 'flex');
+        emailConsultBtn.addEventListener('click', () => emailModal.style.display = 'flex');
+        wechatConsultBtn.addEventListener('click', () => wechatModal.style.display = 'flex');
+        
+        // 关闭模态框
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                phoneModal.style.display = 'none';
+                emailModal.style.display = 'none';
+                wechatModal.style.display = 'none';
+            });
+        });
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', (e) => {
+            if (e.target === phoneModal) phoneModal.style.display = 'none';
+            if (e.target === emailModal) emailModal.style.display = 'none';
+            if (e.target === wechatModal) wechatModal.style.display = 'none';
+        });
+        
+        // 复制功能
+        copyPhoneBtn.addEventListener('click', () => copyToClipboard('15755853147'));
+        copyEmailBtn.addEventListener('click', () => copyToClipboard('severin@foxmail.com'));
+        copyWechatBtn.addEventListener('click', () => copyToClipboard('SeverinDesign'));
+        
+        // 添加微信按钮
+        addWechatBtn.addEventListener('click', () => {
+            copyToClipboard('SeverinDesign');
+            window.location.href = 'weixin://';
+        });
+        
+        // 复制到剪贴板函数
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            // 显示复制成功提示
+            copyNotification.classList.add('show');
+            setTimeout(() => {
+                copyNotification.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
