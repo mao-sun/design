@@ -672,7 +672,7 @@
                 font-size: 1rem; 
             }
             .section { 
-                padding: 60px 0; 
+                padding: 50px 0; /* 从60px减少到50px */
             }
             .section-title { 
                 margin-bottom: 30px; 
@@ -692,10 +692,33 @@
             .testimonial-text { 
                 font-size: 1rem; 
             }
-            .service-card { 
-                padding: 25px 15px; 
-                margin-bottom: 15px;
+            
+            /* 服务卡片移动端布局优化 */
+            .service-card {
+                padding: 20px 15px;
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
             }
+            .service-icon {
+                margin-bottom: 0;
+                margin-right: 15px;
+                font-size: 2rem;
+                flex-shrink: 0;
+            }
+            .service-card-content {
+                flex: 1;
+            }
+            .service-card h3 {
+                margin-bottom: 8px;
+                font-size: 1.3rem;
+            }
+            .service-card p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            
             .close-btn {
                 width: 45px;
                 height: 45px;
@@ -759,6 +782,12 @@
             .section-title h2 { 
                 font-size: 1.8rem; 
             }
+            .section {
+                padding: 40px 0; /* 从50px减少到40px */
+            }
+            .section-title {
+                margin-bottom: 20px; /* 从30px减少到20px */
+            }
             .about-text h3 { 
                 font-size: 1.6rem; 
             }
@@ -803,6 +832,12 @@
             }
             .nav-links {
                 width: 60%;
+            }
+            .section-title {
+                margin-bottom: 15px; /* 从20px减少到15px */
+            }
+            .section-title h2 {
+                font-size: 1.6rem;
             }
             
             /* 页脚布局 - 小屏幕调整 */
@@ -1001,23 +1036,31 @@
             <div class="services-grid">
                 <a href="residential.html" class="service-card">
                     <div class="service-icon"><i class="fas fa-home"></i></div>
-                    <h3>住宅设计</h3>
-                    <p>公寓、别墅、复式等住宅空间的整体规划与设计，打造舒适宜居的生活环境。</p>
+                    <div class="service-card-content">
+                        <h3>住宅设计</h3>
+                        <p>公寓、别墅、复式等住宅空间的整体规划与设计，打造舒适宜居的生活环境。</p>
+                    </div>
                 </a>
                 <a href="commercial.html" class="service-card">
                     <div class="service-icon"><i class="fas fa-building"></i></div>
-                    <h3>商业空间</h3>
-                    <p>办公室、餐厅、零售店等商业空间设计，提升品牌形象与用户体验。</p>
+                    <div class="service-card-content">
+                        <h3>商业空间</h3>
+                        <p>办公室、餐厅、零售店等商业空间设计，提升品牌形象与用户体验。</p>
+                    </div>
                 </a>
                 <a href="space-planning.html" class="service-card">
                     <div class="service-icon"><i class="fas fa-ruler-combined"></i></div>
-                    <h3>空间规划</h3>
-                    <p>优化空间布局，提升空间利用率，创造流畅的功能动线。</p>
+                    <div class="service-card-content">
+                        <h3>空间规划</h3>
+                        <p>优化空间布局，提升空间利用率，创造流畅的功能动线。</p>
+                    </div>
                 </a>
                 <a href="remote.html" class="service-card">
                     <div class="service-icon"><i class="fas fa-laptop"></i></div>
-                    <h3>远程分析</h3>
-                    <p>专业远程空间评估与设计方案，提供详细设计建议和3D可视化方案。</p>
+                    <div class="service-card-content">
+                        <h3>远程分析</h3>
+                        <p>专业远程空间评估与设计方案，提供详细设计建议和3D可视化方案。</p>
+                    </div>
                 </a>
             </div>
         </div>
