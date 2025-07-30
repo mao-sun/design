@@ -191,13 +191,14 @@
             margin: 15px auto 0;
         }
         
-        /* 服务优势区域 */
+        /* 服务优势区域 - 修改网格布局 */
         .benefits {
             background-color: rgba(232, 216, 196, 0.15);
         }
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* 修改为固定四列布局 */
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 30px;
         }
         .benefit-card {
@@ -614,6 +615,12 @@
         }
         
         /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, minmax(300px, 1fr));
+            }
+        }
+        
         @media (max-width: 992px) {
             .hero h1 { 
                 font-size: 2.8rem; 
@@ -1118,10 +1125,7 @@
                 <p>开启您的空间改造之旅</p>
             </div>
             <div class="booking-container">
-                <form id="remoteAnalysisForm" class="booking-form" 
-                      action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSc7QurBYawWp08Y1hg5-CrzqjhIeY_babYud8FGq8d_pd4_8w/formResponse" 
-                      method="POST">
-                      
+                <form id="remoteAnalysisForm" class="booking-form">
                     <div class="form-group">
                         <label for="entry.1154381800">您的房屋面积（㎡）</label>
                         <input type="number" id="entry.1154381800" name="entry.1154381800" 
@@ -1135,6 +1139,8 @@
                             <option value="普通商品房">普通商品房</option>
                             <option value="LOFT公寓">LOFT公寓</option>
                             <option value="别墅">别墅</option>
+                            <!-- 新增商业店铺选项 -->
+                            <option value="商业店铺">商业店铺</option>
                             <option value="其他">其他</option>
                         </select>
                     </div>
@@ -1145,6 +1151,8 @@
                             <option value="" disabled selected>请选择需求类型</option>
                             <option value="新房装修">新房装修</option>
                             <option value="旧房翻新">旧房翻新</option>
+                            <!-- 新增店铺装潢选项 -->
+                            <option value="店铺装潢">店铺装潢</option>
                         </select>
                     </div>
                     
@@ -1233,12 +1241,16 @@
         const formSuccess = document.getElementById('formSuccess');
         
         remoteAnalysisForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             // 显示成功消息
             formSuccess.style.display = 'block';
-            remoteAnalysisForm.style.display = 'none';
+            remoteAnalysisForm.reset();
             
-            // 允许表单正常提交到Google Forms
-            // 不需要阻止默认行为
+            // 5秒后自动隐藏成功信息
+            setTimeout(() => {
+                formSuccess.style.display = 'none';
+            }, 5000);
         });
         
         // 平滑滚动到预约区域
