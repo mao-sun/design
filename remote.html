@@ -772,6 +772,37 @@
                 text-align: left;
                 font-size: 0.95rem;
             }
+            
+            /* 修改服务优势网格为单列布局 */
+            .benefits-grid {
+                grid-template-columns: 1fr; /* 改为单列 */
+                gap: 20px; /* 减少间距 */
+            }
+            
+            /* 优化卡片内部布局 */
+            .benefit-card {
+                flex-direction: row;
+                align-items: flex-start;
+                padding: 15px; /* 进一步减少内边距 */
+            }
+            
+            .benefit-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+                margin-right: 12px;
+                margin-bottom: 0; /* 移除底部边距 */
+            }
+            
+            .benefit-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            
+            .benefit-card p {
+                font-size: 0.9rem;
+                margin-top: 0;
+            }
         }
         
         @media (max-width: 576px) {
