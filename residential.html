@@ -575,7 +575,7 @@
             margin: 0 auto 40px;
         }
         
-        /* 页脚 - 去除超链接样式 */
+        /* 页脚 - 强制并排显示（与index.html相同） */
         footer { 
             background-color: var(--dark); 
             color: white; 
@@ -760,10 +760,6 @@
             .section-title { 
                 margin-bottom: 30px; /* 从40px减小到30px */
             }
-            .section-title h2 { 
-                font-size: 2rem; 
-                padding-bottom: 10px;
-            }
             .portfolio-grid { 
                 grid-template-columns: 1fr; 
                 gap: 25px;
@@ -780,13 +776,40 @@
                 display: block;
             }
             
-            /* 设计理念部分移动端优化 */
+            /* 设计理念部分移动端优化 - 特征项水平排列 */
             .philosophy-text {
                 padding: 20px;
             }
             .philosophy-features {
                 grid-template-columns: 1fr;
                 gap: 15px;
+            }
+            .feature-item {
+                flex-direction: row; /* 水平排列 */
+                align-items: flex-start; /* 顶部对齐 */
+                text-align: left; /* 文字左对齐 */
+                padding: 15px;
+            }
+            .feature-icon {
+                margin-bottom: 0; /* 移除底部间距 */
+                margin-right: 15px; /* 添加右侧间距 */
+                flex-shrink: 0; /* 防止图标被压缩 */
+                width: 60px; /* 调整大小 */
+                height: 60px; /* 调整大小 */
+            }
+            .feature-icon i {
+                font-size: 1.5rem; /* 图标大小 */
+            }
+            .feature-text {
+                flex: 1; /* 占据剩余空间 */
+            }
+            .feature-text h4 {
+                font-size: 1.1rem; /* 标题大小 */
+                margin-bottom: 5px; /* 减小间距 */
+            }
+            .feature-text p {
+                font-size: 0.9rem; /* 文字大小 */
+                line-height: 1.5; /* 行高 */
             }
             
             /* 服务区域移动端优化 */
@@ -811,6 +834,18 @@
             .design-process,
             .contact-section {
                 padding: 60px 0 !important; /* 从100px减小到60px */
+            }
+            
+            /* 页脚在移动端强制并排显示 */
+            .footer-bottom-row {
+                flex-direction: row; /* 保持行排列 */
+                gap: 20px; /* 添加间隙 */
+            }
+            .footer-links {
+                flex: 0 0 45%; /* 固定宽度 */
+            }
+            .footer-contact {
+                flex: 1; /* 自适应剩余空间 */
             }
         }
         
@@ -864,8 +899,11 @@
             
             /* 页脚移动端优化 */
             .footer-bottom-row {
-                flex-direction: column;
-                gap: 30px;
+                flex-direction: row; /* 强制并排显示 */
+                gap: 15px; /* 减小间距 */
+            }
+            .footer-links {
+                flex: 0 0 45%; /* 固定宽度 */
             }
             
             /* 小屏幕下进一步优化标题间距 - 移除顶部间距 */
@@ -895,6 +933,15 @@
             /* 进一步减小标题的底部间距 */
             .section-title {
                 margin-bottom: 15px;
+            }
+            
+            /* 在超小屏幕上调整页脚布局 */
+            .footer-bottom-row {
+                flex-direction: row; /* 保持并排 */
+                gap: 10px; /* 减小间距 */
+            }
+            .footer-links {
+                flex: 0 0 45%; /* 固定宽度 */
             }
         }
     </style>
@@ -1236,7 +1283,7 @@
         </div>
     </section>
 
-    <!-- 页脚 - 去除超链接样式 -->
+    <!-- 页脚 - 强制并排显示（与index.html相同） -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1249,10 +1296,10 @@
                     <div class="footer-links">
                         <h3 class="footer-heading">设计服务</h3>
                         <ul>
-                            <li><a href="#">住宅设计</a></li>
-                            <li><a href="#">商业空间</a></li>
-                            <li><a href="#">空间规划</a></li>
-                            <li><a href="#">远程分析</a></li>
+                            <li><a href="residential.html">住宅设计</a></li>
+                            <li><a href="commercial.html">商业空间</a></li>
+                            <li><a href="space-planning.html">空间规划</a></li>
+                            <li><a href="remote.html">远程分析</a></li>
                         </ul>
                     </div>
                     
