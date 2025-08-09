@@ -587,65 +587,6 @@
             .designer-overlay {
                 padding: 60px 0;
             }
-            
-            /* 预约咨询弹窗在移动端的布局调整 */
-            .contact-methods {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-            
-            .contact-btn {
-                flex: 0 0 calc(50% - 5px);
-                min-width: auto;
-                flex-direction: row;
-                align-items: center;
-                text-align: left;
-                padding: 15px;
-            }
-            
-            .contact-btn i {
-                margin-bottom: 0;
-                margin-right: 15px;
-                font-size: 1.8rem;
-            }
-            
-            .contact-btn h4, 
-            .contact-btn p {
-                margin: 0;
-            }
-            
-            .contact-btn:nth-child(3) {
-                flex: 0 0 100%;
-                margin-top: 10px;
-            }
-            
-            /* 设计理念模块在移动端调整 */
-            .philosophy-container {
-                flex-direction: column;
-            }
-            
-            .philosophy-card {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-                text-align: left;
-                padding: 20px;
-            }
-            
-            .philosophy-icon {
-                margin: 0 20px 0 0;
-                flex-shrink: 0;
-            }
-            
-            .philosophy-content {
-                flex: 1;
-            }
-            
-            .philosophy-card h3 {
-                margin-top: 0;
-                margin-bottom: 10px;
-            }
         }
         
         @media (max-width: 576px) {
@@ -711,27 +652,6 @@
                 margin-right: 8px;
                 font-size: 0.9rem;
             }
-            
-            /* 预约咨询弹窗在移动端的布局调整 */
-            .contact-btn {
-                padding: 12px;
-            }
-            
-            .contact-btn i {
-                font-size: 1.5rem;
-                margin-right: 12px;
-            }
-            
-            /* 设计理念模块在移动端调整 */
-            .philosophy-card {
-                padding: 15px;
-            }
-            
-            .philosophy-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
         }
         
         @media (max-width: 400px) {
@@ -784,18 +704,6 @@
             
             .footer-contact p {
                 min-height: 28px;
-            }
-            
-            /* 设计理念模块在移动端调整 */
-            .philosophy-card {
-                padding: 12px;
-            }
-            
-            .philosophy-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-                margin-right: 15px;
             }
         }
         
@@ -1029,16 +937,18 @@
             align-items: flex-start;
         }
         
-        /* 移除图标后的调整 */
-        .info-text {
-            width: 100%;
-            text-align: center;
-        }
-        
-        @media (max-width: 768px) {
-            .info-text {
-                text-align: left;
-            }
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.3rem;
+            color: var(--accent);
+            flex-shrink: 0;
         }
         
         .info-text h4 {
@@ -1070,8 +980,6 @@
             cursor: pointer;
             transition: var(--transition);
             border: 1px solid var(--secondary);
-            display: flex;
-            flex-direction: column;
         }
         
         .contact-btn:hover {
@@ -1203,8 +1111,8 @@
         .wechat-modal {
             display: none;
             position: fixed;
-            top: 0,
-            left: 0,
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.85);
@@ -1258,7 +1166,6 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            display: block;
         }
         
         .wechat-id {
@@ -1445,6 +1352,11 @@
                 text-align: center;
             }
             
+            .info-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
             .phone-icon,
             .email-icon {
                 width: 80px;
@@ -1559,28 +1471,22 @@
                     <div class="philosophy-icon">
                         <i class="fas fa-utensils"></i>
                     </div>
-                    <div class="philosophy-content">
-                        <h3>功能性设计</h3>
-                        <p>餐厅设计首要考虑功能性。我们精心规划空间布局，确保工作流程高效顺畅，同时为顾客提供舒适的用餐环境。从厨房到用餐区的动线设计，每个细节都经过深思熟虑。</p>
-                    </div>
+                    <h3>功能性设计</h3>
+                    <p>餐厅设计首要考虑功能性。我们精心规划空间布局，确保工作流程高效顺畅，同时为顾客提供舒适的用餐环境。从厨房到用餐区的动线设计，每个细节都经过深思熟虑。</p>
                 </div>
                 <div class="philosophy-card">
                     <div class="philosophy-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
-                    <div class="philosophy-content">
-                        <h3>氛围营造</h3>
-                        <p>灯光、色彩和材质的完美结合创造独特氛围。我们根据不同餐厅类型和品牌定位，打造专属的空间氛围，让顾客在用餐过程中获得愉悦的感官体验。</p>
-                    </div>
+                    <h3>氛围营造</h3>
+                    <p>灯光、色彩和材质的完美结合创造独特氛围。我们根据不同餐厅类型和品牌定位，打造专属的空间氛围，让顾客在用餐过程中获得愉悦的感官体验。</p>
                 </div>
                 <div class="philosophy-card">
                     <div class="philosophy-icon">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <div class="philosophy-content">
-                        <h3>美学表达</h3>
-                        <p>餐厅不仅是用餐场所，更是艺术表达的舞台。我们通过精心挑选的家具、艺术品和装饰元素，将品牌故事融入空间设计，创造令人难忘的视觉体验。</p>
-                    </div>
+                    <h3>美学表达</h3>
+                    <p>餐厅不仅是用餐场所，更是艺术表达的舞台。我们通过精心挑选的家具、艺术品和装饰元素，将品牌故事融入空间设计，创造令人难忘的视觉体验。</p>
                 </div>
             </div>
         </div>
@@ -1696,16 +1602,20 @@
                 <button class="close-appointment"><i class="fas fa-times"></i></button>
             </div>
             <div class="appointment-details">
-                <!-- 修改：移除了图标 -->
                 <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
                     <div class="info-text">
                         <h4>工作室地点</h4>
                         <p>浙江省金华市浦江县<br>提供远程设计服务</p>
                     </div>
                 </div>
                 
-                <!-- 修改：移除了图标 -->
                 <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
                     <div class="info-text">
                         <h4>工作时间</h4>
                         <p>周一至周五: 9:00-17:00（周二除外）<br>周末与节假日: 10:00-16:00（需预约）</p>
@@ -1716,26 +1626,20 @@
                 <div class="contact-methods">
                     <div class="contact-btn" id="phoneConsultBtn">
                         <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <h4>电话咨询</h4>
-                            <p>直接与设计师沟通</p>
-                        </div>
+                        <h4>电话咨询</h4>
+                        <p>直接与设计师沟通</p>
                     </div>
                     
                     <div class="contact-btn" id="wechatConsultBtn">
                         <i class="fab fa-weixin"></i>
-                        <div>
-                            <h4>微信咨询</h4>
-                            <p>SeverinDesign</p>
-                        </div>
+                        <h4>微信咨询</h4>
+                        <p>SeverinDesign</p>
                     </div>
                     
                     <div class="contact-btn" id="emailConsultBtn">
                         <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>邮件咨询</h4>
-                            <p>severin@foxmail.com</p>
-                        </div>
+                        <h4>邮件咨询</h4>
+                        <p>severin@foxmail.com</p>
                     </div>
                 </div>
             </div>
@@ -1771,7 +1675,7 @@
             </div>
             <div class="wechat-details">
                 <div class="qr-code">
-                    <img src="https://s3.bmp.ovh/imgs/2025/07/29/c30149142fc9b3e3.png" alt="微信二维码">
+                    <img src="https://s3.bmp.ovh/imgs/2025/08/09/c30149142fc9b3e3.png" alt="微信二维码">
                 </div>
                 <div class="wechat-id">SeverinDesign</div>
                 <button id="copyWechatBtn" class="call-btn">复制微信号</button>
